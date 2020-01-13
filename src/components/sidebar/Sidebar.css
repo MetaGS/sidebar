@@ -4,11 +4,17 @@
     height:100%;
     background-color:white;
     padding-top: 10px;
-    
     border-radius: 0px 5px 10px 0px;
+    /* position:relative; */
+    font-size:1em;
+    overflow-wrap: break-word;
+    overflow:auto;
 }
 
+
+
 .main-transparent {
+    overflow: auto;
     padding-top: 0px;
     padding-left: 0px;
     margin-left: 0;
@@ -17,4 +23,10 @@
     height: 100%;
     position:fixed;
     background-color: rgba(128,128,128,0.4);
+}
+
+.inner-container {
+    width: 70%;
+    margin: 0 auto;
+    /* overflow: auto; */
 }

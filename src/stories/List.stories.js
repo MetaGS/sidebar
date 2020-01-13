@@ -8,7 +8,7 @@ export default {
 }
 
 export const Hello = () => <List  
-    onClick={ action('clicked') } 
+    onClick={ action('onClick') } 
     item={{text:'Hello World'}} 
     />;
     

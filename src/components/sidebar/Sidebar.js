@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Sidebar.css';
-import List from '../sidebarList/List'
+import List from '../sidebarList/List';
+import CloseButton from './closeButton'
 
 
 
@@ -12,9 +13,12 @@ class Sidebar extends Component {
             return (
             <div className="main-transparent">
                 <div className="sidebar-main">
-                    {texts.map(item=>{
-                        return <List item={item} />
-                    })}
+                    <div className="inner-container">
+                        <CloseButton/>
+                            {texts.map(item=>{
+                                return <List item={item} />
+                            })}
+                    </div>
                 </div>
             </div>
             )

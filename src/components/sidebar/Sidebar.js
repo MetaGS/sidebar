@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import './Sidebar.css';
 import List from '../sidebarList/List';
-import CloseButton from './closeButton'
+import CloseButton from './closeButton';
+import PropTypes from 'prop-types';
 
 
 
@@ -29,3 +30,14 @@ class Sidebar extends Component {
 }
 
 export default Sidebar;
+
+Sidebar.propTypes = {
+    listData: PropTypes.arrayOf(PropTypes.shape({
+        text: PropTypes.string.isRequired
+    })),
+    activity: PropTypes.bool
+};
+
+Sidebar.defaultProps = {
+    activity: false
+}

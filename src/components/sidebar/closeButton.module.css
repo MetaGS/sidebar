@@ -1,0 +1,29 @@
+.close {
+    border-radius: 50px;
+    border: 4px solid #C9D8DB;
+    text-align: center;
+    font-size: 30px;
+    font-style: bold;
+    width: 45px;
+    height: 45px;
+    padding-left: 8px;
+    padding-top: 1px;
+    margin-right: 0px;
+    position:absolute;
+    left:26%;
+    top: 0px;
+    background-color: white;
+    transition: all 0.3s;
+}
+
+.close:hover {
+    outline: none;
+    background-color:#C9D8DB;
+    border: 4px white solid;
+}
+
+.close:active {
+outline: none;
+    
+ background-color:white;
+}

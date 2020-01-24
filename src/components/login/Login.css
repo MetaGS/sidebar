@@ -1,11 +1,14 @@
 .main-login {
     width: 70%;
     margin: auto auto;
-    background-color: khaki;
-    height: 500px;
+    background-color:rgba(246,249,252,1);
+    
     /* min-height: 500px; */
-    position: relative;
+    position: absolute;
     padding:0;
+    left: 30%;
+    top: 25%;
+    /* left: 30%; */
 }
 
 /* 
@@ -23,7 +26,7 @@ color: #DBE9EE;
     min-width: 200px;
     margin: 0 auto;
     height: 50%;
-    background-color: lawngreen;
+    /* background-color: lawngreen; */
     position:absolute;
     left:25%;
     top: 25%;
@@ -34,14 +37,17 @@ color: #DBE9EE;
 
 
 .inner-form {
-    margin: 0 auto;
+    
     width:80%;
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: row-reverse; */
+    justify-content: flex-start;
     background-color:rgb(201, 216, 219);
     /* margin: 10px 10px 10px 10px; */
     /* margin: 10% 10% 10% 10%; */
-    position:absolute;
-    top:10%;
-    left:10%;
+    
+    margin: 0 auto;
     padding: 10px;
     border-radius: 5px;
 
@@ -51,22 +57,24 @@ color: #DBE9EE;
 label {
     padding: 0;
     margin:2px;
+    width: 100%;
+    
 }
 
 
 input[type='text'], input[type='password'] {
-    margin:2px;
-    display:block;
-    width:94%;
+    
+    display: block;
+    width: 100%;
     box-sizing: border-box;
     border: 1px solid #ccc;
-    margin: 8px 2px;
+    margin: 8px 0;
     padding: 12px 20px;
 }
 
 button{
     margin:2px;
-    width: 94%;
+    width: 100%;
     /* box-sizing: content-box; */
     cursor:pointer;
     border: none;

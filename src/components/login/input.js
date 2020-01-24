@@ -9,6 +9,7 @@ export function Input(props) {
             <input 
                 type={props.type}
                 placeholder={props.placeholder}
+                id={props.name}
                 value={props.value}
                 checked={props.isChecked}
                 name={props.name}

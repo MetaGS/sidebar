@@ -2,54 +2,64 @@ import React, {Component} from 'react';
 import logo from '../../logo.svg';
 import './App.css';
 import Sidebar from '../sidebar/Sidebar';
+import {listData} from './data'
+import Login from '../login/Login';
 
 
-const listData = [
-    {
-        text: 'My profile',
-    },
-    {
-        text: 'News'
-    },
-    {
-        text: 'Notifications'
-    },
-    {
-        text: 'Tasks'
-    },
-    {
-        text: 'Homework'
-    },
-    {
-        text: 'Enlargement'
-    },
-    {
-        text: 'Settings'
-    }
 
-];
 
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {activity:false};
+    this.state = {
+      activity:false,
+      signUpPage:false,
+      loginPage:false
+    };
     this.handleClick = this.handleClick.bind(this);
-
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this)
   }
 
   handleClick(e){
     e.preventDefault();
-    const activity = this.state.activity;
-    this.setState({activity:!activity});
+    const copy = {...this.state};
+    copy.activity = !copy.activity;
+    copy.loginPage = false;
+    copy.signUpPage = false;
+
+    this.setState(copy);
   }
 
+  handleLogin(e){
+    e.preventDefault();
+    const copy = {...this.state} 
+    copy.signUpPage = false;
+    copy.loginPage = !copy.loginPage;
+    this.setState(copy);
+  }
+
+  handleSignUp(e){
+    e.preventDefault();
+    const copy = {...this.state} 
+    copy.loginPage = false;
+    copy.signUpPage = !copy.sighUpPage;
+    this.setState(copy);
+   }
+
   render(){
+    const handleLogin = this.handleLogin;
+    const handleSignUp = this.handleSignUp;
+    
     return (
       <div className="App">
         <Sidebar 
-          activity={this.state.activity}
+          {...this.state}
+          handlers={{handleLogin, handleSignUp}}
           listData={listData}
+          onClick={this.handleClick}
         />
+        {this.state.loginPage&&<Login />}
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <button 

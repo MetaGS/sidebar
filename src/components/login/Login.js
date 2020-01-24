@@ -33,7 +33,7 @@ class Login extends Component {
     render(){
         return (
             <div className='main-login'>
-                    <h1>{JSON.stringify(this.state)}</h1>
+                    {/* <h1>{JSON.stringify(this.state)}</h1> */}
                 <div className='login-inputs'>
                     <form className='inner-form'>
                     <Input 
@@ -53,7 +53,7 @@ class Login extends Component {
                         onChange={this.handleChange}
                         text='Password'
                     />
-                    <button type='submit'onClick={this.handleChange}>Submit</button>
+                    <button type='submit'onClick={this.handleChange}>Log in</button>
                     <Input 
                         type='checkbox' 
                         isChecked={this.state.remember} 

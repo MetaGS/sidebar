@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Sidebar.css';
 import List from '../sidebarList/List';
+import {LoginButton} from '../sidebarList/loginButton'
 import CloseButton from './closeButton';
 import PropTypes from 'prop-types';
 
@@ -15,7 +16,8 @@ class Sidebar extends Component {
             <div className="main-transparent">
                 <div className="sidebar-main">
                     <div className="inner-container">
-                        <CloseButton/>
+                        <CloseButton onClick={this.props.onClick}/>
+                            <LoginButton handlers={this.props.handlers}/>
                             {texts.map(item=>{
                                 return <List item={item} />
                             })}

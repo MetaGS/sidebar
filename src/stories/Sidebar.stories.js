@@ -1,10 +1,12 @@
 import React from 'react';
 // import {action} from '@storybook/addon-actions';
+import {withKnobs, object} from '@storybook/addon-knobs/react'
 import Sidebar from '../components/sidebar/Sidebar';
 
 export default {
     title: "Sidebar",
-    component: Sidebar
+    component: Sidebar,
+    decorators: [withKnobs]
 }
 
 const listData = [
@@ -75,7 +77,7 @@ export const FirstEnteredData = () => <Sidebar
         activity={true}
     />
 export const InactiveCheck = () => <Sidebar 
-        listData={listData}
+        listData={object('listData',{...listData})}
         activity={false}
     />
 

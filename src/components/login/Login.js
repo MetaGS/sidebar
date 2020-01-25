@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Login.css';
 import {PropTypes} from 'prop-types';
 import {Input} from './input'
+import CloseButton from '../buttons/closeButton';
 
 class Login extends Component {
     constructor(props){
@@ -31,11 +32,14 @@ class Login extends Component {
 
 
     render(){
+        const phone = this.props.width > 750 ? 'usual' : 'wider' ;
+        
         return (
-            <div className='main-login'>
+            <div className={`main-login ${phone}`}>
                     {/* <h1>{JSON.stringify(this.state)}</h1> */}
                 <div className='login-inputs'>
                     <form className='inner-form'>
+                    <CloseButton styles='close-btn-login' onClick={this.props.onClick}/>
                     <Input 
                         name='uemail'
                         type='text'
@@ -43,6 +47,7 @@ class Login extends Component {
                         value={this.state.uemail}
                         onChange={this.handleChange}
                         text='Email'
+                        tabIndex={1}
                     />
                     
                     <Input 

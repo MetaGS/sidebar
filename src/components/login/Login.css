@@ -1,14 +1,29 @@
 .main-login {
-    width: 70%;
-    margin: auto auto;
-    background-color:rgba(246,249,252,1);
+    /* width: 70%; */
+    
+    background-color:rgba(246,249,252,0.5);
     
     /* min-height: 500px; */
     position: absolute;
     padding:0;
-    left: 30%;
-    top: 25%;
+    /* left: 25%; */
+    /* top: 25%; */
     /* left: 30%; */
+    /* top: 25%; */
+    height: 100%;
+}
+
+.usual {
+    width: 75%;
+    left: 25%;
+
+}
+
+.wider {
+    width:100%;
+    left: 0;
+    top: 0%;
+    height:100%;
 }
 
 /* 
@@ -22,14 +37,18 @@ color: #DBE9EE;
 */
 
 .login-inputs {
-    width: 50%;
-    min-width: 200px;
-    margin: 0 auto;
-    height: 50%;
+    width: 70%;
+    min-width: 400px;
+
+   
+    max-width: 500px;
+    display:flex;
+    flex-wrap: wrap;
     /* background-color: lawngreen; */
-    position:absolute;
-    left:25%;
-    top: 25%;
+    position:relative;
+    
+    top: 17%;
+    margin: 0 auto;
     padding:0;
     min-height: 150px;
     box-sizing: border-box;
@@ -40,15 +59,15 @@ color: #DBE9EE;
     
     width:80%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     /* flex-direction: row-reverse; */
     justify-content: flex-start;
     background-color:rgb(201, 216, 219);
     /* margin: 10px 10px 10px 10px; */
     /* margin: 10% 10% 10% 10%; */
-    
+    position: relative;
     margin: 0 auto;
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
 
     /* padding:5%; */
@@ -58,7 +77,7 @@ label {
     padding: 0;
     margin:2px;
     width: 100%;
-    
+    font-size: 1.1em;
 }
 
 
@@ -69,16 +88,21 @@ input[type='text'], input[type='password'] {
     box-sizing: border-box;
     border: 1px solid #ccc;
     margin: 8px 0;
-    padding: 12px 20px;
+    padding: 9px 20px;
+    font-size: 1em;
+    border-radius: 20px;
 }
 
-button{
+button {
     margin:2px;
+    border-radius: 20px;
     width: 100%;
+    max-width: 400px;
     /* box-sizing: content-box; */
     cursor:pointer;
     border: none;
-    padding: 14px 20px;
+    padding: 9px 20px;
+    font-size: 1em;
     background-color: #4CAF50
 }
 
@@ -96,6 +120,12 @@ button:active {
     outline-color:rgb(77, 144, 254);
     outline-width: 1px;
 }
+
+.close-btn-login {
+    right: 1%;
+    top: 1%;
+}
+
 
 
 

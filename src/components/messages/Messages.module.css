@@ -1,0 +1,8 @@
+.danger {
+    padding: 3px 10px;
+    background-color: rgba(180, 56, 56, 0.2);
+    border: 0px grey solid;
+    margin-bottom: 5px;
+    border-radius: 7px;
+    color: rgba(190,0,0,0.8);
+}

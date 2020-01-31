@@ -19,6 +19,7 @@
 
 .login-buttons {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 10px 0;
     padding: 0;
     width: 100%;
@@ -27,6 +28,8 @@
 .login-1 {
     margin: 10px 0;
     padding: 4px 20px;
+    min-width: 100px;
+    width: 49%;
     flex-grow: 1;
     font-size: 0.9em;
     border-radius: 10px;

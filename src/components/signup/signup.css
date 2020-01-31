@@ -14,7 +14,7 @@
 
 .signup-main {
     overflow: auto;
-    max-width: 400px;
+    max-width: 600px;
     background-color: rgb(222, 222, 240);
     margin-top: 20px;
     padding:40px;
@@ -64,7 +64,7 @@
     /* margin-bottom: 50px; */
     display: flex;
     flex-direction: column;
-    
+    align-items: center;
     justify-content: center;
 }
 
@@ -115,4 +115,11 @@
     right: 1%;
     top: 2px;
     
+}
+
+
+/* media for less than 750px */ 
+.wider .signup-main {
+    width: 99%;
+    max-width: 400px;
 }

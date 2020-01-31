@@ -90,11 +90,11 @@ class App extends Component {
         {this.state.signUpPage && <SignUp onClick={handleSignUp} width={this.state.width} />}
         <header className="App-header">
           
-          <button 
+          <div style={{backgroundColor: 'green',padding: 20, borderRadius:20}}
             className='toggleSidebar' 
             onClick={this.handleClick}
           >Open Sidebar
-          </button>
+          </div>
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>

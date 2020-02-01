@@ -5,6 +5,7 @@ import Sidebar from '../sidebar/Sidebar';
 import {listData} from './data'
 import Login from '../login/Login';
 import {SignUp} from '../signup/signup'
+import Topbar from '../topbar/Topbar';
 
 
 
@@ -80,12 +81,14 @@ class App extends Component {
     return (
       <div className="App">
         {/* <h2>{`height ${this.state.height}  width ${this.state.width}`}</h2> */}
+        <div style={{backgroundColor:'red', cursor:'pointer'}}>Hello world</div>
         <Sidebar 
           {...this.state}
           handlers={{handleLogin, handleSignUp}}
           listData={listData}
           onClick={this.handleClick}
         />
+        <Topbar onClick={this.handleClick} active={this.state.activity}/>
         {this.state.loginPage && <Login onClick={handleLogin} width={this.state.width}/>}
         {this.state.signUpPage && <SignUp onClick={handleSignUp} width={this.state.width} />}
         <header className="App-header">

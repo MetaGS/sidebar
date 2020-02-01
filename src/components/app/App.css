@@ -1,8 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Bowlby+One+SC|Montserrat:400,600,700&display=swap');
+
+/* 
+font-family: 'Bebas Neue', cursive;
+font-family: 'Bowlby One SC', cursive;
+font-family: 'Montserrat', sans-serif;
+
+
+*/
 .App {
   height: 100%;
   padding-top: 0px;
   padding: 0;
   margin: 0;
+}
+
+.container1 {
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 

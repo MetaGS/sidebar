@@ -1,0 +1,128 @@
+/* 
+container1
+    main
+        logo
+            logo_self
+        right_bar
+            ul
+                5 li's
+
+*/
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: red; */
+    width: 100%;
+    height: 50px;
+    /* position: relative; */
+    /* cursor: pointer; */
+    background-color: rgb(148, 147, 147);
+}
+
+.fixed_main {
+    position: fixed;
+    top: 0;
+}
+
+.logo {
+    height: 100%;
+    margin-left: 2%;
+    display: flex;
+    align-items: center;
+    font-family: 'Bowlby One SC', cursive;
+    font-weight:300;
+}
+
+.logo_self {
+    margin-left: 10px;
+    /* cursor: pointer; */
+}
+
+.burger {
+    width: 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.burger_self {
+    height: 3px;
+    background-color: white;
+    width: 100%;
+    display: block;
+    position: relative;
+    transition: transform 0.2s linear;
+}
+
+.burger_self:before,
+.burger_self:after {
+    content: '';
+    position: absolute;
+    transition: transform 0.3s linear;
+    width: 100%;
+    height: 3px;
+    z-index: 1;
+    background-color: white;
+}
+
+.burger_self:before {
+    transform-origin: left top;
+    top: -8px;
+}
+
+.burger_self:after {
+    transform-origin: left bottom;
+    top:8px;
+}
+
+.active .burger_self {
+    background: none;
+    
+}
+
+.active .burger_self::before {
+    transform-origin: left top;
+
+    transform: rotate(45deg) translate(-2px,-4px);
+}
+
+.active .burger_self::after {
+    transform-origin: left bottom;
+    transform: rotate(-45deg) translate(1px,1px);
+}
+
+
+
+.right_bar ul {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    /* cursor: pointer; */
+}
+
+.right_bar li {
+    list-style: none;
+    /* background-color: red ; */
+    margin-left: 10px;
+    border: 1px rgba(0,0,0,0) solid;
+    padding: 4px 7px;
+}
+
+.right_bar li:last-child {
+    margin-right: 10px;
+}
+
+.right_bar li:hover {
+    border: 1px grey solid;
+    border-radius: 5px;
+    background-color: rgb(112, 110, 110);
+}
+
+.right_bar li:active {
+    /* border: 1px grey solid;
+    border-radius: 5px; */
+    background-color: rgb(223, 219, 219);
+}

@@ -1,0 +1,53 @@
+.main {
+ color: red;
+ width: 80px;
+}
+
+.spinner {
+    margin: 0;
+    padding: 0;
+    width: 80px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color:; */
+}
+
+.spinner_itself1,.spinner_itself2, .spinner_itself3 {
+    margin-right: 3px;
+    display: block;
+    background-color: rgb(155, 179, 177);
+    width: 20px;
+    height: 18px;
+    position: relative;
+    border-radius: 4px;
+    animation-name: spinner;
+    animation-duration: 2s;
+
+    animation-iteration-count: infinite;
+}
+
+/* .spinner_itself1 {
+    animation: spinner1 2s infinite;
+} */
+
+.spinner_itself2 {
+    animation-delay: 0.4s;
+}
+
+.spinner_itself3 {
+    animation-delay: 0.8s;
+    
+}
+
+@keyframes spinner{
+    50% {
+        transform: scale(0.6) ;
+    }
+}
+
+
+
+
+

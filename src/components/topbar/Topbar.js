@@ -14,6 +14,7 @@ export default function Topbar(props){
 
     return (
         <div className='container1'>
+            {props.children}
             <div className={`${styles.main} `}>
                 <div className={styles.logo}>
                     <div 

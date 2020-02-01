@@ -28,9 +28,10 @@ class Sidebar extends Component {
         if (active) {
             return (
                 <div className="main-transparent" onClick={this.closeOnTransparentClick}>
+                    
                     <div className={`sidebar-main ${sidebarWidth}`}>
                         <div className="inner-container">
-                            <CloseButton styles={closeButtonLayout} onClick={this.props.onClick} />
+                            {/* <CloseButton styles={closeButtonLayout} onClick={this.props.onClick} /> */}
                             <LoginButton handlers={this.props.handlers} />
                             {texts.map(item => {
                                 return <List item={item} />

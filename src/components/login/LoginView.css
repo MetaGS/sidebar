@@ -1,17 +1,9 @@
 .main-login {
-    /* width: 70%; */
-    
     background-color:rgba(246,249,252,0.5);
-    
-    /* min-height: 500px; */
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     padding:0;
-    /* left: 25%; */
-    /* top: 25%; */
-    /* left: 30%; */
-    /* top: 25%; */
     height: 100%;
 }
 

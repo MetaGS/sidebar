@@ -4,12 +4,13 @@ import { Input } from './input'
 import CloseButton from '../buttons/closeButton';
 import Messages from '../messages/Messages';
 import './LoginView.css';
+import MainTransparent from '../utils/mainTransparent';
 
 export default function LoginView(props){
     const {phone,onClick,onSubmit,errors,data,handleChange,handleCheckbox} = props.utils;
 
     return (
-        (<div className={`main-login ${phone}`}>
+        <MainTransparent styles={phone}>
 
                 <div className='login-inputs'>
                     <form className='inner-form' onSubmit={onSubmit}>
@@ -48,6 +49,6 @@ export default function LoginView(props){
                     </form>
                 </div>
 
-            </div>)
+            </MainTransparent>
     )
 }

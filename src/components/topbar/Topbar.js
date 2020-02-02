@@ -4,7 +4,11 @@ import styles from './Topbar.module.css'
 
 export default function Topbar(props){
     // const [active, setActive] = useState(props.active);
-    
+    const phone = props.width > 750 ? 'usual' : 'wider' ;
+    const displayOrNot = {}
+    if(phone === 'wider'){
+        displayOrNot.display = 'none';
+    } 
 
 
     // function toggleBurger(e){
@@ -25,7 +29,7 @@ export default function Topbar(props){
                     </div>
                     <h2 className={styles.logo_self}>CodeWithMe</h2>
                 </div>
-                <div className={styles.right_bar}>
+                <div className={styles.right_bar} style={displayOrNot}>
                     <ul>
                         <li>Main</li>
                         <li>Docs</li>

@@ -1,6 +1,7 @@
 .main {
  color: red;
  width: 80px;
+ margin: 0 auto;
 }
 
 .spinner {
@@ -17,7 +18,7 @@
 .spinner_itself1,.spinner_itself2, .spinner_itself3 {
     margin-right: 3px;
     display: block;
-    background-color: rgb(155, 179, 177);
+    background-color: rgb(90, 105, 104);
     width: 20px;
     height: 18px;
     position: relative;

@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { makeRequest } from '../utils/makeRequest';
 import Messages from '../messages/Messages';
 import Loading from '../utils/loading';
-import LoginView from './LoginView'
+import LoginView from './LoginView';
+import MainTransparent from '../utils/mainTransparent';
 
 class Login extends Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class Login extends Component {
                 password: '',
                 remember: true
             },
-            loading:false,
+            loading: false,
             errors: {}
         }
         this.handleChange = this.handleChange.bind(this)
@@ -42,7 +43,7 @@ class Login extends Component {
         console.log(data);
         if (Object.keys(errors).length === 0) {
             console.log('there is no errors');
-            this.setState({loading:!this.state.loading})
+            this.setState({ loading: !this.state.loading })
         } else {
             this.setState({ errors: errors });
             console.log('errors here');
@@ -69,16 +70,17 @@ class Login extends Component {
 
     render() {
 
-        const  { data, errors } = this.state;
+        const { data, errors } = this.state;
         const onClick = this.props.onClick;
         const phone = this.props.width > 750 ? 'usual' : 'wider';
-        const loading = <Loading />;
+        const loading = <MainTransparent styles={phone}> <Loading /> </MainTransparent>;
         const loginInputs = <LoginView
-            utils={{ data, errors, onClick, 
-                     phone, onSubmit: this.onSubmit,
-                     handleChange: this.handleChange,
-                     handleCheckbox: this.handleCheckbox
-                    }}
+            utils={{
+                data, errors, onClick,
+                phone, onSubmit: this.onSubmit,
+                handleChange: this.handleChange,
+                handleCheckbox: this.handleCheckbox
+            }}
         />
 
         return this.state.loading ? loading : loginInputs;

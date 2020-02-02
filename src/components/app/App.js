@@ -22,7 +22,7 @@ class App extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     // this.handleToggle = this.handleToggle.bind(this);
-    
+
     this.updateDimension = this.updateDimension.bind(this);
   }
 
@@ -58,7 +58,7 @@ class App extends Component {
 
 
   handleToggle(itemToToggle, close) {
-    return (e) =>{
+    return (e) => {
       e.preventDefault();
       const copy = { ...this.state }
       copy[close] = false;
@@ -68,16 +68,16 @@ class App extends Component {
   }
 
   render() {
-    const handleLoginToggle = this.handleToggle('loginPage','signUpPage');
-    const handleSignUpToggle = this.handleToggle('signUpPage','loginPage');
+    const handleLoginToggle = this.handleToggle('loginPage', 'signUpPage');
+    const handleSignUpToggle = this.handleToggle('signUpPage', 'loginPage');
 
     return (
       <div className="App">
-        <Topbar onClick={this.handleClick} active={this.state.activity}>
+        <Topbar onClick={this.handleClick} active={this.state.activity} width={this.state.width}>
 
           <Sidebar
             {...this.state}
-            handlers={{ handleLogin:handleLoginToggle, handleSignUp:handleSignUpToggle }}
+            handlers={{ handleLogin: handleLoginToggle, handleSignUp: handleSignUpToggle }}
             listData={listData}
             onClick={this.handleClick}
           />
@@ -88,13 +88,9 @@ class App extends Component {
 
         <header className="App-header">
 
-          <div style={{ backgroundColor: 'green', padding: 20, borderRadius: 20 }}
-            className='toggleSidebar'
-            onClick={this.handleClick}
-          >Open Sidebar
-          </div>
           
-          
+        <h1>hi There</h1>
+
         </header>
       </div>
     );

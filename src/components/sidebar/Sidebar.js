@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Sidebar.css';
 import List from '../sidebarList/List';
-import { LoginButton } from '../sidebarList/loginButton'
+import LoginButton from '../sidebarList/loginButton/loginButtonMain'
 import CloseButton from '../buttons/closeButton';
 import PropTypes from 'prop-types';
 
@@ -19,21 +19,20 @@ class Sidebar extends Component {
 
 
     render() {
-        const active = this.props.activity;
-        const texts = this.props.listData;
+        const { active, userData, listData } = this.props;
         const sidebarWidth = Number(this.props.width) > 750 ? 'sidebar-main-laptop' : 'sidebar-main-phone';
-        const closeButtonLayout = sidebarWidth === 'sidebar-main-laptop' ? 'close-btn-sidebar-laptop' : 'close-btn-sidebar-phone'
+        const closeButtonLayout = sidebarWidth === 'sidebar-main-laptop' ? 'close-btn-sidebar-laptop' : 'close-btn-sidebar-phone';
 
 
         if (active) {
             return (
                 <div className="main-transparent" onClick={this.closeOnTransparentClick}>
-                    
+
                     <div className={`sidebar-main ${sidebarWidth}`}>
                         <div className="inner-container">
                             {/* <CloseButton styles={closeButtonLayout} onClick={this.props.onClick} /> */}
-                            <LoginButton handlers={this.props.handlers} />
-                            {texts.map(item => {
+                            <LoginButton handlers={this.props.handlers} userData={userData} />
+                            {listData.map(item => {
                                 return <List item={item} />
                             })}
                         </div>

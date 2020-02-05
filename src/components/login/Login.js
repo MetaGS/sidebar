@@ -20,7 +20,8 @@ class Login extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleCheckbox = this.handleCheckbox.bind(this);
-        this.onSubmit = this.onSubmit.bind(this)
+        this.onSubmit = this.onSubmit.bind(this);
+        this.textInput = React.createRef();
     }
 
     handleChange(e) {
@@ -36,14 +37,34 @@ class Login extends Component {
 
     }
 
+    componentDidMount() {
+        this.textInput.current.focus();
+    }
+
     onSubmit(e) {
-        e.preventDefault()
+        e.preventDefault(); // it is tied with enter key on keybord, need to connect in the future;
+
         const { data } = this.state;
         const errors = this.checkForErrors(data);
         console.log(data);
         if (Object.keys(errors).length === 0) {
             console.log('there is no errors');
-            this.setState({ loading: !this.state.loading })
+            this.setState({ loading: !this.state.loading });
+
+            const [field, save] = this.props.handleParentState('userData');
+
+            // makeRequest accepts only json data
+            const json = JSON.stringify(data)
+            makeRequest(json).then((data) => {
+
+                // this.setState({ loading: false });
+                data = JSON.parse(data);
+                data.loggedIn = true;
+                save(data)
+                this.props.onClick();
+
+            })
+
         } else {
             this.setState({ errors: errors });
             console.log('errors here');
@@ -76,7 +97,7 @@ class Login extends Component {
         const loading = <MainTransparent styles={phone}> <Loading /> </MainTransparent>;
         const loginInputs = <LoginView
             utils={{
-                data, errors, onClick,
+                data, errors, onClick, inputRef: this.textInput,// here we pass ref forward (experimenting)
                 phone, onSubmit: this.onSubmit,
                 handleChange: this.handleChange,
                 handleCheckbox: this.handleCheckbox

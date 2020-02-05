@@ -11,85 +11,134 @@ import Topbar from '../topbar/Topbar';
 
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      activity: false,
-      signUpPage: false,
-      loginPage: false,
-      height: 0,
-      width: 0
+      activity: {
+        sideBar: false,
+        signUpPage: false,
+        loginPage: false,
+      },
+      dimensions: {
+        height: 0,
+        width: 0
+      },
+      userData: {
+        name: '',
+        nickName: '',
+        email: '',
+        photoSrc: '',
+        loggedIn: false
+      }
     };
-    this.handleClick = this.handleClick.bind(this);
-    // this.handleToggle = this.handleToggle.bind(this);
 
     this.updateDimension = this.updateDimension.bind(this);
+    this.handleParentState = this.handleParentState.bind(this);
+  
   }
+
+  
+  componentDidMount() {
+    this.updateDimension();
+    window.addEventListener('resize', this.updateDimension);
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimension);
+  }
+  
+  //need to check with console.log before use
 
   updateDimension() {
     const height = window !== undefined ? window.innerHeight : 0;
     const width = window !== undefined ? window.innerWidth : 0;
 
     const stateCopy = { ...this.state };
-    stateCopy.width = Number(width);
-    stateCopy.height = Number(height);
+    stateCopy.dimensions.width = Number(width);
+    stateCopy.dimensions.height = Number(height);
 
     this.setState(stateCopy)
   }
 
-  componentDidMount() {
-    this.updateDimension();
-    window.addEventListener('resize', this.updateDimension);
-  }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimension);
-  }
+  // handleParentState(stateField, callbackFunc) {
+  //   const copy = { ...this.state };
+  //   const changedField = callbackFunc(copy[stateField]);
+  //   // what if returns function
+  //   this.setState({ ...copy, [stateField]: changedField },
+  //       ()=>{console.log(this.state)}
+  //   );
+  // }
 
-  handleClick(e) {
-    e.preventDefault();
+  handleParentState(stateField) {
     const copy = { ...this.state };
-    copy.activity = !copy.activity;
-    copy.loginPage = false;
-    copy.signUpPage = false;
-    this.setState(copy);
+    const field = copy[stateField];
+    // returns requested field with function which will concat with state when called
+    return [field,(newField)=>{
+      this.setState({ ...copy, [stateField]: newField },
+          ()=>{console.log(this.state)}
+      );
+    }];
   }
 
 
+  handlePages(obj={}) {  // made default for obj so that it didnt crashes
 
-  handleToggle(itemToToggle, close) {
     return (e) => {
-      e.preventDefault();
-      const copy = { ...this.state }
-      copy[close] = false;
-      copy[itemToToggle] = !copy[itemToToggle];
-      this.setState(copy);
+      const keys = Object.keys(obj);
+      const activity = Object.entries(this.state.activity);
+      let newActivity = {};
+
+      activity.forEach(([page, show]) => {
+        if (keys.includes(page)) {
+          newActivity[page] = obj[page] === 'toggle' ? !show : obj[page];
+        } else {
+          newActivity[page] = false;
+        }
+      })
+      console.log(newActivity)
+      this.setState({ ...this.state, activity: newActivity });
     }
   }
 
+
+
   render() {
-    const handleLoginToggle = this.handleToggle('loginPage', 'signUpPage');
-    const handleSignUpToggle = this.handleToggle('signUpPage', 'loginPage');
+    const handleLoginActivity = this.handlePages({ loginPage: 'toggle', sideBar: true });
+    const handleSignUpActivity = this.handlePages({ signUpPage: 'toggle',sideBar: true });
+    const handleSideBarToggle = this.handlePages({ sideBar: 'toggle' });
+    const handleParentState = this.handleParentState;
+    const { loginPage: loginPageActivity, 
+            signUpPage: signUpPageActivity,
+            sideBar: sideBarActivity } = this.state.activity;
+    const { width } = this.state.dimensions;
 
     return (
       <div className="App">
-        <Topbar onClick={this.handleClick} active={this.state.activity} width={this.state.width}>
+        <Topbar onClick={handleSideBarToggle} active={sideBarActivity} width={width}>
 
           <Sidebar
-            {...this.state}
-            handlers={{ handleLogin: handleLoginToggle, handleSignUp: handleSignUpToggle }}
-            listData={listData}
-            onClick={this.handleClick}
+            {
+              ...{ ...this.state, active: sideBarActivity, width:width }}
+              handlers={{ handleLoginClick: handleLoginActivity, 
+              handleSignUpClick: handleSignUpActivity, handleParentState: handleParentState }}
+              listData={listData}
+              onClick={handleSideBarToggle}
           />
 
         </Topbar>
-        {this.state.loginPage && <Login onClick={handleLoginToggle} width={this.state.width} />}
-        {this.state.signUpPage && <SignUp onClick={handleSignUpToggle} width={this.state.width} />}
+        {loginPageActivity && <Login
+          onClick={handleLoginActivity}
+          width={width}
+          handleParentState={this.handleParentState}
+        />}
+        {signUpPageActivity && <SignUp onClick={handleSignUpActivity} width={width} />}
 
         <header className="App-header">
 
-          
-        <h1>hi There</h1>
+
+          <h1>hi There</h1>
 
         </header>
       </div>
@@ -98,3 +147,7 @@ class App extends Component {
 }
 
 export default App;
+
+
+// need to write propTypes and default props; 
+// and default arguments for functions 

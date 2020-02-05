@@ -3,9 +3,7 @@
 
 export const makeRequest = function (json) {
 
-
     // const data = JSON.parse(json);
-
     let prom = new Promise((resolve, reject) => {
         let data;
         setTimeout(function () {
@@ -15,11 +13,13 @@ export const makeRequest = function (json) {
                 console.log('You provided wrong format');
                 return reject('Wrong format')
             }
-            const response = {
-                name: data.name,
+            let response = {
+                name: data.name = 'starTrek',
                 email: data.email,
-                imgSrc: '../src/tim.jpg'
+                imgSrc: '../src/tim.jpg',
+                nickName: 'StenLee'
             }
+            response = JSON.stringify(response);
             resolve(response);
         }, 1000)
     })

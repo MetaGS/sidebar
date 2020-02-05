@@ -7,7 +7,7 @@ import './LoginView.css';
 import MainTransparent from '../utils/mainTransparent';
 
 export default function LoginView(props){
-    const {phone,onClick,onSubmit,errors,data,handleChange,handleCheckbox} = props.utils;
+    const {phone,onClick,onSubmit,errors,data,handleChange,handleCheckbox,inputRef} = props.utils;
 
     return (
         <MainTransparent styles={phone}>
@@ -24,6 +24,7 @@ export default function LoginView(props){
                             onChange={handleChange}
                             text='Email'
                             tabIndex={1}
+                            inputRef={inputRef} // forwarding ref and it is very tedious
                         />
                         {errors.email && <Messages styles='danger' text={errors.email} />}
 

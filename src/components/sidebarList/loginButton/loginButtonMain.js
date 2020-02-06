@@ -1,13 +1,13 @@
 import React from 'react';
 import './loginButton.css';
 import LoginButton from './loginButton';
-import LogoutButton from './logoutButton';
 
 
 export default function LoginMain(props) {
 
     const userData = props.userData;
     const loggedIn = userData.loggedIn;
+
 
     function logOut() {
         const [, save] = props.handlers.handleParentState('userData');
@@ -18,11 +18,20 @@ export default function LoginMain(props) {
             email: ''
         })
     }
+    const { handleLoginClick, handleSignUpClick } = props.handlers;
     // also when user clicks login or signup focus should be on the input
-    const loginView = <LoginButton onLoginClick={props.handlers.handleLoginClick}
-        onSignUpClick={props.handlers.handleSignUpClick} />;
-    const logoutView = <LogoutButton logOut={logOut} userData={userData}/>
+    const loginView = (
+        <LoginButton>
+            {[
+                { onClick: handleLoginClick, text: 'Log in' },
+                { onClick: handleSignUpClick, text: 'Sign up' }
+            ]}
+        </LoginButton>);
+    const logoutView = (
+        <LoginButton userData={userData} >
+            {[{ onClick: logOut, text: 'Log out' }]}
+        </LoginButton>);
 
 
-    return loggedIn ? logoutView: loginView;
+        return loggedIn ? logoutView : loginView;
 }

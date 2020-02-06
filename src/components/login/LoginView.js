@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useEffect }from 'react';
 import { PropTypes } from 'prop-types';
 import { Input } from './input'
 import CloseButton from '../buttons/closeButton';
@@ -7,13 +7,21 @@ import './LoginView.css';
 import MainTransparent from '../utils/mainTransparent';
 
 export default function LoginView(props){
-    const {phone,onClick,onSubmit,errors,data,handleChange,handleCheckbox,inputRef} = props.utils;
+    let inputRef = React.createRef();
+    useEffect(() => {
+      inputRef.current.focus();  
+
+      return () => {
+      };
+    }, [])
+
+    const {phone,onClick,onSubmit,errors,data,handleChange,handleCheckbox} = props.utils;
 
     return (
         <MainTransparent styles={phone}>
 
                 <div className='login-inputs'>
-                    <form className='inner-form' onSubmit={onSubmit}>
+                    <form className='inner-form' onSubmit={onSubmit} action="#">
 
                         <CloseButton styles='close-btn-login' onClick={onClick} />
                         <Input
@@ -38,7 +46,7 @@ export default function LoginView(props){
                         />
                         {errors.password && <Messages styles='danger' text={errors.password}/>}
 
-                        <button className='login_submit' type='submit' onClick={onSubmit}>Log in</button>
+                        <button className='login_submit' type='submit' >Log in</button>
                         <Input
                             type='checkbox'
                             isChecked={data.remember}

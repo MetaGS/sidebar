@@ -6,6 +6,7 @@ import { listData } from './data'
 import Login from '../login/Login';
 import { SignUp } from '../signup/signup'
 import Topbar from '../topbar/Topbar';
+import MainHeader from '../header/mainHeader'
 
 
 
@@ -113,6 +114,7 @@ class App extends Component {
             signUpPage: signUpPageActivity,
             sideBar: sideBarActivity } = this.state.activity;
     const { width } = this.state.dimensions;
+    const userData = this.state.userData;
 
     return (
       <div className="App">
@@ -125,9 +127,11 @@ class App extends Component {
               handleSignUpClick: handleSignUpActivity, handleParentState: handleParentState }}
               listData={listData}
               onClick={handleSideBarToggle}
+              userData={userData}
           />
 
         </Topbar>
+        <MainHeader/>
         {loginPageActivity && <Login
           onClick={handleLoginActivity}
           width={width}
@@ -151,3 +155,5 @@ export default App;
 
 // need to write propTypes and default props; 
 // and default arguments for functions 
+// need to set tabindexes
+// use tablerows for data statistics at the end

@@ -102,6 +102,11 @@ input[type='text'], input[type='password'] {
     border-radius: 20px;
 }
 
+.inner-form input:focus {
+    outline: none;
+}
+
+
 .inner-form button[type=submit] {
     margin:2px;
     border-radius: 20px;
@@ -132,6 +137,7 @@ button:active {
     outline-width: 0px;
     opacity: 1;
 }
+
 
 .close-btn-login {
     right: 1%;

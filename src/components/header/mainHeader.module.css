@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+.fullWidth {
+    background-color: #282C34;
+    /* background-color: red; */
+    min-height: 400px;
+    padding: 0;
+    height: 95vh;
+    max-height: 1000px;
+}
+
+.mainContainer {
+    max-width: 1000px;
+    height: 100%;
+    /* background-color: #fff; */
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contentItem {
+    width: 50%;
+    min-width: 320px;
+    background-color: rgb(71, 57, 36);
+    color:#FFFFFF;
+    height: 70%;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0 50px;
+    display: flex;
+    
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.headerH1 {
+    font-size: 3em;
+    margin: 20px 0;
+}
+
+.headerP {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.2em;
+}

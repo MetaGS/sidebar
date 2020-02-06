@@ -99,8 +99,10 @@ container1
     height: 100%;
     display: flex;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Bebas Neue', cursive;
     font-weight: 600;
+    letter-spacing: 3px;
+    font-size: 1.1em;
     /* cursor: pointer; */
 }
 

@@ -16,7 +16,7 @@ export const makeRequest = function (json) {
             let response = {
                 name: data.name = 'starTrek',
                 email: data.email,
-                imgSrc: '../src/tim.jpg',
+                photoSrc: '/tim.jpg',
                 nickName: 'StenLee'
             }
             response = JSON.stringify(response);

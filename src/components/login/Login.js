@@ -37,9 +37,25 @@ class Login extends Component {
 
     }
 
-    componentDidMount() {
-        this.textInput.current.focus();
+    keyDownListener = (event) => {
+        if(event.code ==='Enter' || event.code === 'NumpadEnter') {
+            
+            this.onSubmit(event);
+        }
     }
+
+
+
+    componentDidMount() {
+        document.addEventListener('keydown',this.keyDownListener);
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener('keydown',this.keyDownListener);
+    }
+
+
+
 
     onSubmit(e) {
         e.preventDefault(); // it is tied with enter key on keybord, need to connect in the future;

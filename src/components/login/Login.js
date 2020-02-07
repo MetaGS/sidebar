@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { makeRequest } from '../utils/makeRequest';
 import Messages from '../messages/Messages';
 import Loading from '../utils/loading';
-import LoginView from './LoginView';
+import {LoginViewWithFocus as LoginView} from './LoginView';
 import MainTransparent from '../utils/mainTransparent';
 
 class Login extends Component {

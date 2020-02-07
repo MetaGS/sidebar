@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './mainHeader.module.css';
+import SignUpView from './signupView';
 
 
 class MainHeader extends Component {
@@ -19,7 +20,7 @@ class MainHeader extends Component {
                             </p>
                         </div>
                         <div className={`${styles.contentRight} ${styles.contentItem}`}>
-                            contentRight
+                            <SignUpView />
                         </div>
                     </div>
                 </div>

@@ -51,7 +51,7 @@ color: #DBE9EE;
     flex-direction: column;
     /* flex-direction: row-reverse; */
     justify-content: flex-start;
-    background-color:rgb(201, 216, 219);
+    background-color:#FFFFFF;
     /* margin: 10px 10px 10px 10px; */
     /* margin: 10% 10% 10% 10%; */
     position: relative;
@@ -95,11 +95,11 @@ input[type='text'], input[type='password'] {
     display: block;
     width: 100%;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 2px solid #C9D8DB;
     margin: 8px 0;
     padding: 9px 20px;
     font-size: 1em;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .inner-form input:focus {
@@ -109,22 +109,20 @@ input[type='text'], input[type='password'] {
 
 .inner-form button[type=submit] {
     margin:2px;
-    border-radius: 20px;
+  
     width: 100%;
     max-width: 420px;
     /* box-sizing: content-box; */
     cursor:pointer;
-    border: none;
+    background-color: rgb(191, 206, 209);
     padding: 9px 20px;
     font-size: 1em;
-    background-color: #4CAF50;
+  
     position:relative;
    
 }
 
-button:hover {
-    opacity: 0.8
-}
+
 button:focus{
     outline:none;
 }

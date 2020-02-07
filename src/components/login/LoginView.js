@@ -5,15 +5,12 @@ import CloseButton from '../buttons/closeButton';
 import Messages from '../messages/Messages';
 import './LoginView.css';
 import MainTransparent from '../utils/mainTransparent';
+import FocusHOC from '../utils/focusHOC';
+
+export const LoginViewWithFocus = FocusHOC(LoginView); 
 
 export default function LoginView(props){
-    let inputRef = React.createRef();
-    useEffect(() => {
-      inputRef.current.focus();  
-
-      return () => {
-      };
-    }, [])
+    
 
     const {phone,onClick,onSubmit,errors,data,handleChange,handleCheckbox} = props.utils;
 
@@ -32,7 +29,7 @@ export default function LoginView(props){
                             onChange={handleChange}
                             text='Email'
                             tabIndex={1}
-                            inputRef={inputRef} // forwarding ref and it is very tedious
+                            inputRef={props.inputRef} // forwarding ref and it is very tedious
                         />
                         {errors.email && <Messages styles='danger' text={errors.email} />}
 
@@ -46,7 +43,7 @@ export default function LoginView(props){
                         />
                         {errors.password && <Messages styles='danger' text={errors.password}/>}
 
-                        <button className='login_submit' type='submit' >Log in</button>
+                        <button className='login-1' type='submit' >Log in</button>
                         <Input
                             type='checkbox'
                             isChecked={data.remember}

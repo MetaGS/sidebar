@@ -10,11 +10,14 @@
 
 .loginImage {
     display: block;
+    top:20px;
     max-width: 100px;
     border-radius: 10px;
     border-style: solid;
     border-color: #C9D8DB;
     border-width: 2px;
+    overflow: hidden;
+    padding-top:5px;
 }
 
 .login-buttons {
@@ -26,21 +29,21 @@
 }
 
 .login-1 {
-    margin: 10px 0;
+    margin:5px 0;
     padding: 4px 20px;
     min-width: 100px;
-    width: 49%;
+    width:50%;
     flex-grow: 1;
     font-size: 0.9em;
-    border-radius: 10px;
-    background-color: rgb(96, 204, 92);
+    border-radius: 5px;
+   background-color: #fff;
 }
 
 .login-1:hover {
-    background-color: rgb(96,204,92);
+    background-color: #C9D8DB;
     
 }
 
 .login-11 {
-    margin-right: 4px;
+    
 }

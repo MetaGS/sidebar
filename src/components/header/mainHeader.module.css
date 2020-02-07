@@ -5,7 +5,8 @@
     background-color: #282C34;
     /* background-color: red; */
     min-height: 400px;
-    padding: 0;
+
+    padding: 50px 0 0 0;
     height: 95vh;
     max-height: 1000px;
 }
@@ -28,7 +29,7 @@
 .contentItem {
     width: 50%;
     min-width: 320px;
-    background-color: rgb(71, 57, 36);
+    /* background-color: rgb(71, 57, 36); */
     color:#FFFFFF;
     height: 70%;
     font-family: 'Montserrat', sans-serif;
@@ -47,4 +48,9 @@
 .headerP {
     font-family: 'Bebas Neue', cursive;
     font-size: 1.2em;
+    color: grey;
+}
+
+.contentRight {
+    /* background-color: rgb(70, 60, 60); */
 }

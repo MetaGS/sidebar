@@ -1,6 +1,6 @@
    .container {
      
-     border-radius: 10px;
+     border-radius:5px;
      
      padding:0;
      width: 100%;
@@ -10,10 +10,7 @@
      margin-top: 10px;
      cursor:pointer;
    } 
-   .text {
-       margin: 4px;
-       
-   }
+
 
    .mainClick:hover {
        background-color:#C9D8DB;
@@ -36,4 +33,10 @@
   border-color: #C9D8DB;  
   border-width: 2px;
   border-style: solid;
+}
+
+.textSidebar {
+  font-size: 1.1em;
+  font-weight:200;
+  margin: 4px;
 }

@@ -7,7 +7,7 @@ class List extends Component {
         const item = this.props.item
         return (
             <div className="container mainClick" onClick={this.props.onClick}>
-                <h3 className="text">{this.props.item.text}</h3>
+                <div className="textSidebar">{this.props.item.text}</div>
             </div>
         )
     }

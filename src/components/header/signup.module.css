@@ -1,32 +1,18 @@
-.signup-container {
-    /* width: 70%;
-    left: 25%; */
-    background-color:rgba(246,249,252,0.5);
-    position: fixed;
-    top: 0;
-    margin-top: 0px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-
-
-    /* overflow: auto; */
-    
-}
 
 
 
-.signup-main {
+
+.signupMain {
     overflow: auto;
     max-width: 600px;
-    background-color: #FFFFFF;
+    background-color:#FAFBFC;
     margin-top: 0px;
     padding:40px;
     width:100%;
     max-height:100%;
     overflow-wrap: break-word;
-    font-family: sans-serif;
-    
+    font-family: 'Montserrat', sans-serif;
+    color:#282C34;
     border-radius: 5px;
     margin: 0 auto;
     /* position:absolute;
@@ -34,11 +20,11 @@
     top: 17%; */
 }
 
-.signup-self h2 {
+.signupSelf h2 {
     margin-top: 0;
 }
 
-.signup-self {
+.signupSelf {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +32,7 @@
 
 
 
-.signup-self input {
+.signupSelf input {
     padding: 9px;
     padding-left: 20px;
     color: dark;
@@ -55,17 +41,16 @@
     outline: none;
 }
 
-.signup-self button {
+.signupSelf button {
     margin: 20px auto;
     padding: 9px;
     font-size: 1em;
     width: 100%;
     border-radius: 5px;
     outline: none;
-    background-color: #BFCED1;
 }
 
-.signup-thirdparty {
+.signupThirdparty {
     margin-top: 10px;
     /* margin-bottom: 50px; */
     display: flex;
@@ -74,7 +59,7 @@
     justify-content: center;
 }
 
-.signup-thirdparty button {
+.signupThirdparty button {
     outline: none;
     width: 100%;
     margin-top: 10px;
@@ -85,7 +70,7 @@
     border-radius: 5px;
 }
 
-.signup-thirdparty button:active {
+.signupThirdparty button:active {
     opacity: 1;
 }
 
@@ -125,7 +110,3 @@
 
 
 /* media for less than 750px */ 
-.wider .signup-main {
-    width: 99%;
-    max-width: 400px;
-}

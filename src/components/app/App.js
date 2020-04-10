@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../../logo.svg';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import Sidebar from '../sidebar/Sidebar';
 import { listData } from './data'
@@ -7,6 +7,8 @@ import Login from '../login/Login';
 import { SignUpWithFocus } from '../signup/signup';
 import Topbar from '../topbar/Topbar';
 import MainHeader from '../header/mainHeader'
+import Docs from '../pages/Docs';
+import Contacts from '../pages/Contacs';
 
 
 
@@ -83,12 +85,12 @@ class App extends Component {
     }];
   }
 
-  makeBodyUnscorollable(obj){
+  makeBodyUnscorollable(obj) {
     const values = Object.values(obj);
-    let scroll = values.every(value=>{
+    let scroll = values.every(value => {
       return value === false;
     });
-    document.body.style.overflow = scroll?'unset':'hidden';
+    document.body.style.overflow = scroll ? 'unset' : 'hidden';
 
   }
 
@@ -99,7 +101,7 @@ class App extends Component {
       const keys = Object.keys(obj);
       const activity = Object.entries(this.state.activity);
       let newActivity = {};
-      
+
       activity.forEach(([page, show]) => {
         if (keys.includes(page)) {
           newActivity[page] = obj[page] === 'toggle' ? !show : obj[page];
@@ -127,14 +129,13 @@ class App extends Component {
     const userData = this.state.userData;
     const position = this.state.activity.sideBar ? 'fixed' : 'static';
     console.log(position)
-    const styleToApp = {
-      // position: position,
-      // overflow: 'hidden',
-      // top: 0,
-      // left: 0
+    
+    const stylesToApp = {
+
     }
     return (
-      <div className="App" style={styleToApp}>
+      // <BrowserRouter>
+      <div className="App" style={stylesToApp}>
         <Topbar onClick={handleSideBarToggle} active={sideBarActivity} width={width}>
 
           <Sidebar
@@ -150,21 +151,38 @@ class App extends Component {
           />
 
         </Topbar>
-        <MainHeader />
-        {loginPageActivity && <Login
-          onClick={handleLoginActivity}
-          width={width}
-          handleParentState={this.handleParentState}
-        />}
+
         {signUpPageActivity && <SignUpWithFocus onClick={handleSignUpActivity} width={width} />}
 
-        <header className="App-header">
+        {/* Routes Go here  */}
+
+        <Route exact path='/'>
+          <MainHeader />
+          {loginPageActivity && <Login
+            onClick={handleLoginActivity}
+            width={width}
+            handleParentState={this.handleParentState}
+          />}
+        </Route>
+
+        <Route path='/about'>
+          <header className="App-header">
+            <h1>hi There</h1>
+          </header>
+        </Route>
+
+        <Route path='/docs'>
+          <Docs/>
+        </Route>
+
+        <Route path='/contacts'>
+          <Contacts/>
+        </Route>
 
 
-          <h1>hi There</h1>
 
-        </header>
       </div>
+      // </BrowserRouter>
     );
   }
 }

@@ -3,11 +3,14 @@
 }
 .fullWidth {
     background-color: #282C34;
+    background-image: url('../../bc.png');
+    background-position: center;
+    background-size: cover;
     /* background-color: red; */
     min-height: 400px;
 
     padding: 50px 0 0 0;
-    height: 95vh;
+    height: 100vh;
     max-height: 1000px;
 }
 

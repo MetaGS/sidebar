@@ -22,6 +22,7 @@ body {
     z-index: 10;
     /* cursor: pointer; */
     background-color: #2B3137;
+    /* background-image: url('../../bc.png'); */
     color: #FAFBFC
 }
 
@@ -120,6 +121,7 @@ body {
     cursor: pointer;
 }
 
+
 .right_bar li:last-child {
     margin-right: 10px;
 }
@@ -134,4 +136,18 @@ body {
     /* border: 1px grey solid;
     border-radius: 5px; */
     background-color: rgb(223, 219, 219);
+}
+
+.right_bar a {
+    text-decoration: none;
+    color:#FAFBFC;
+}
+.right_bar a:hover {
+    text-decoration: underline;
+}
+
+.activeLink li{
+    border: 1px grey solid;
+    border-radius: 5px;
+    background-color: rgb(112, 110, 110);
 }

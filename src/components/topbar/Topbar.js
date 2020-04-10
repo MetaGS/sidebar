@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import styles from './Topbar.module.css'
+import styles from './Topbar.module.css';
+import {Link, NavLink} from 'react-router-dom';
 
 
 export default function Topbar(props){
@@ -31,10 +32,20 @@ export default function Topbar(props){
                 </div>
                 <div className={styles.right_bar} style={displayOrNot}>
                     <ul>
-                        <li>Main</li>
-                        <li>Docs</li>
-                        <li>Contacts</li>
-                        <li>About</li>
+                        <NavLink to='/' exact activeClassName={styles.activeLink}>
+                            <li>Main</li>
+                        </NavLink>
+                        <Link to='/docs'>
+                            <li>Docs</li>
+                        </Link>
+                        <Link to='/contacts'>
+                            <li>Contacts</li>
+                        </Link>
+                        <NavLink to='./about' activeClassName={styles.activeLink}>
+                            <li>About</li>
+                        </NavLink>
+                            <input type="text" className="class"/>
+                            <i className="search icon"></i>
                     </ul>
                 </div>
             </div>

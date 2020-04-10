@@ -1,0 +1,87 @@
+.main {
+    position: relative;
+   
+    color: whitesmoke;
+    background-color: #282C34;
+    display: flex;
+    background-position: left;
+    background-size: auto;
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 100vh;
+    font-size: 50px;
+
+}
+
+.left {
+    width: 40%;
+    height: 100%;
+}
+
+.right {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+
+/* Main block styles */
+.mainBlock {
+    height: 200px;
+    width: 200px;
+    position: relative;
+    background: linear-gradient(180deg,#191C38 , #313991 ,#191C38);
+    color: white;
+    border-radius: 5px;
+    border: 1px solid rgb(90, 94, 105);
+    text-align: center;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease;
+    margin-top: 20px;
+    box-shadow: 2px 2px blue;
+}   
+
+.mainBlock:hover {
+    transform: translate(-5px,-5px);
+    box-shadow:  5px 5px rgb(1, 1, 230), 10px 10px rgb(1, 1, 200), 15px 15px rgb(0, 0, 146);
+    
+
+}
+
+/* .mainBlock::after {
+    content: '';
+    position: absolute;
+    z-index: -10;
+    top: -4px;
+    left: 4px;
+    right: -4px;
+    bottom: -4px;
+    width: 110%;
+    height: 110%;
+    background: linear-gradient(black, blue);
+    border-radius: 10px;
+    
+} */
+
+.blockTextHead {
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #B9BCC0;
+    font-weight: 600;
+}
+
+.blockTextParagraph {
+    font-size: 0.8rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgba(255,255,255,0.8)
+}
+

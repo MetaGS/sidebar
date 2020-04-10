@@ -5,7 +5,7 @@ import LoginButton from './loginButton';
 
 export default function LoginMain(props) {
 
-    const userData = props.userData;
+    const {userData} = props;
     const loggedIn = userData.loggedIn;
 
 

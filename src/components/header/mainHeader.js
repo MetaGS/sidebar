@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import styles from './mainHeader.module.css';
 import SignUpView from './signupView';
+import {Route, Switch} from 'react-router-dom';
 
 
 class MainHeader extends Component {
 
-
-    render() {
+    renderMainPage = () =>{
         return (
             <div className={styles.fullWidth}>
                 <div className={styles.mainContainer}>
@@ -25,7 +25,14 @@ class MainHeader extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
+    }
+
+
+
+
+    render() {
+    return this.renderMainPage();
     }
 }
 

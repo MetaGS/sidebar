@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+
+import Block from './Block';
+
 import bcImage from '../../blueprintIronMan.png'
 import styles from './styles.module.css';
-import Block from './Block';
+
 const stylesSelf = { 
     backgroundColor: '#191C38', 
     backgroundImage: `url(${bcImage})`,
-    
 }
 
 

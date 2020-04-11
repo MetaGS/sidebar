@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
-import styles from './Topbar.module.css';
+import React, {useState, useContext} from 'react';
 import {Link, NavLink} from 'react-router-dom';
+
+import styles from './Topbar.module.css';
+import context from '../AppContext/mainContext';
 
 
 export default function Topbar(props){
@@ -11,6 +13,9 @@ export default function Topbar(props){
         displayOrNot.display = 'none';
     } 
 
+    const contextValue = useContext(context);
+    const closeTabs = contextValue.handlePagesClick({});
+
 
     // function toggleBurger(e){
     //     // setActive(!props.active);
@@ -18,7 +23,7 @@ export default function Topbar(props){
     // } ${props.active?styles.fixed_main:''}
 
     return (
-        <div className='container1'>
+        <>
             {props.children}
             <div className={`${styles.main} `}>
                 <div className={styles.logo}>
@@ -31,7 +36,7 @@ export default function Topbar(props){
                     <h2 className={styles.logo_self}>CodeWithMe</h2>
                 </div>
                 <div className={styles.right_bar} style={displayOrNot}>
-                    <ul>
+                    <ul onClick={closeTabs}>
                         <NavLink to='/' exact activeClassName={styles.activeLink}>
                             <li>Main</li>
                         </NavLink>
@@ -49,6 +54,6 @@ export default function Topbar(props){
                     </ul>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

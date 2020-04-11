@@ -1,9 +1,13 @@
-import React from 'react';
-import './loginButton.css';
+import React, { useContext } from 'react';
+
 import LoginButton from './loginButton';
 
+import './loginButton.css';
+import context from '../../AppContext/mainContext';
 
 export default function LoginMain(props) {
+
+    const contextValue = useContext(context);
 
     const {userData} = props;
     const loggedIn = userData.loggedIn;
@@ -18,7 +22,9 @@ export default function LoginMain(props) {
             email: ''
         })
     }
-    const { handleLoginClick, handleSignUpClick } = props.handlers;
+    const { handleSignUpClick } = props.handlers;
+
+    const handleLoginClick = contextValue.handlePagesClick({ loginPageActivity: 'toggle', sideBarActivity: true })
     // also when user clicks login or signup focus should be on the input
     const loginView = (
         <LoginButton>

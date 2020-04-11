@@ -59,7 +59,7 @@ body {
     width: 100%;
     display: block;
     position: relative;
-    transition: transform 0.2s linear;
+    transition: all 0.2s linear;
 }
 
 .burger_self:before,
@@ -84,18 +84,18 @@ body {
 }
 
 .active .burger_self {
+    /* transform: scale(0, 1); */
     background: none;
     
 }
 
 .active .burger_self::before {
-    transform-origin: left top;
-
+   
     transform: rotate(45deg) translate(-2px,-4px);
 }
 
 .active .burger_self::after {
-    transform-origin: left bottom;
+    
     transform: rotate(-45deg) translate(1px,1px);
 }
 

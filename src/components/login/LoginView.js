@@ -1,10 +1,12 @@
 import React,{ useEffect }from 'react';
 import { PropTypes } from 'prop-types';
+
 import { Input } from './input'
 import CloseButton from '../buttons/closeButton';
-import Messages from '../messages/Messages';
-import './LoginView.css';
 import MainTransparent from '../utils/mainTransparent';
+import Messages from '../messages/Messages';
+
+import './LoginView.css';
 import FocusHOC from '../utils/focusHOC';
 
 export const LoginViewWithFocus = FocusHOC(LoginView); 

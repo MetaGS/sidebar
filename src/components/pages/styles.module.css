@@ -1,6 +1,6 @@
 .main {
+    
     position: relative;
-   
     color: whitesmoke;
     background-color: #282C34;
     display: flex;
@@ -10,7 +10,7 @@
     text-align: center;
     height: 100vh;
     font-size: 50px;
-
+    
 }
 
 .left {
@@ -26,6 +26,7 @@
     align-items: flex-end;
     align-content: center;
     flex-wrap: wrap;
+  
 }
 
 
@@ -33,7 +34,7 @@
 .mainBlock {
     height: 200px;
     width: 200px;
-    position: relative;
+   
     background: linear-gradient(180deg,#191C38 , #313991 ,#191C38);
     color: white;
     border-radius: 5px;
@@ -47,6 +48,7 @@
     transition: all .2s ease;
     margin-top: 20px;
     box-shadow: 2px 2px blue;
+    
 }   
 
 .mainBlock:hover {

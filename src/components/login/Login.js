@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
-import { makeRequest } from '../utils/makeRequest';
 import Messages from '../messages/Messages';
-import Loading from '../utils/loading';
 import {LoginViewWithFocus as LoginView} from './LoginView';
 import MainTransparent from '../utils/mainTransparent';
+
+import { makeRequest } from '../utils/makeRequest';
+import Loading from '../utils/loading';
+
 
 class Login extends Component {
     constructor(props) {
@@ -64,11 +66,11 @@ class Login extends Component {
         const errors = this.checkForErrors(data);
         console.log(data);
         if (Object.keys(errors).length === 0) {
-            console.log('there is no errors');
+            // console.log('there is no errors');
             this.setState({ loading: !this.state.loading });
 
             const [field, save] = this.props.handleParentState('userData');
-
+            console.log(`in Login.js field prop: ${field}`)
             // makeRequest accepts only json data
             const json = JSON.stringify(data)
             makeRequest(json).then((data) => {
@@ -106,6 +108,12 @@ class Login extends Component {
 
 
     render() {
+        const [field, save] = this.props.handleParentState('userData');
+        console.log(`
+            typeof handleParentState ${typeof this.props.handleParentState}
+            field : ${field}
+        `);
+
 
         const { data, errors } = this.state;
         const onClick = this.props.onClick;

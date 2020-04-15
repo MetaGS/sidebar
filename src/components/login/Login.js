@@ -108,13 +108,6 @@ class Login extends Component {
 
 
     render() {
-        const [field, save] = this.props.handleParentState('userData');
-        console.log(`
-            typeof handleParentState ${typeof this.props.handleParentState}
-            field : ${field}
-        `);
-
-
         const { data, errors } = this.state;
         const onClick = this.props.onClick;
         const phone = this.props.width > 750 ? 'usual' : 'wider';

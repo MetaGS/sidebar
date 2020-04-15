@@ -21,8 +21,12 @@
     width: 25%;
 }
 
-.sidebar-main-phone {
+.sidebar-main-tablet {
     width: 70%;
+}
+
+.sidebar-main-phone {
+    width: 100%;
 }
 
 .close-btn-sidebar-laptop {

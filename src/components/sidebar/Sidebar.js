@@ -5,7 +5,7 @@ import List from '../sidebarList/List';
 import LoginButton from '../sidebarList/loginButton/loginButtonMain'
 
 import './Sidebar.css';
-
+import { listData } from '../app/data';
 
 class Sidebar extends Component {
 
@@ -17,13 +17,12 @@ class Sidebar extends Component {
         }
     }
 
-    
-    render() {
-        // console.log(`this is complain about activity prop: ${JSON.stringify(this.props.activity)}`);
-        const { active, userData, listData } = this.props;
-        const sidebarWidth = Number(this.props.width) > 750 ? 'sidebar-main-laptop' : 'sidebar-main-phone';
-        const closeButtonLayout = sidebarWidth === 'sidebar-main-laptop' ? 'close-btn-sidebar-laptop' : 'close-btn-sidebar-phone';
 
+    render() {
+        const { active, userData, width } = this.props;
+        const sidebarWidth = +width > 750 ? 'sidebar-main-laptop' : +width < 450 ? 'sidebar-main-phone' : 'sidebar-main-tablet';
+        const closeButtonLayout = sidebarWidth === 'sidebar-main-laptop' ? 'close-btn-sidebar-laptop' : 'close-btn-sidebar-phone';
+        console.log(sidebarWidth);
 
         if (active) {
             return (
@@ -34,7 +33,7 @@ class Sidebar extends Component {
                             {/* <CloseButton styles={closeButtonLayout} onClick={this.props.onClick} /> */}
                             <LoginButton handlers={this.props.handlers} userData={userData} />
                             {listData.map((item, index) => {
-                                return <List item={item} key={`${index+item}`} />
+                                return <List item={item} key={`${index + item}`} />
                             })}
                         </div>
                     </div>

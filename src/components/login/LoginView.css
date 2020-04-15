@@ -9,13 +9,14 @@
     background-color: red;
 }
 
-.usual {
-    width: 75%;
-    left: 25%;
 
+
+.wider .inner-form {
+    width: 99%;
+    max-width: 380px;
 }
 
-
+/* -------------------- */
 
 
 
@@ -24,7 +25,7 @@
 background-color: #DBE9EE;
 color: #466995; h3 color
 color: #DBE9EE; 
- background: #C0D6DF; li hover
+background: #C0D6DF; li hover
  border: 1px solid #466995;
 
 
@@ -63,23 +64,6 @@ color: #DBE9EE;
     /* padding:5%; */
 }
 
-/* Media : less than 750px */
-
-.wider {
-    width:100%;
-    left: 0;
-    top: 0%;
-    height:100%;
-    padding: 0;
-    margin: 0;
-}
-
-.wider .inner-form {
-    width: 99%;
-    max-width: 380px;
-}
-
-/* -------------------- */
 
 
 

@@ -10,7 +10,6 @@ import Docs from '../pages/Docs';
 import Contacts from '../pages/Contacs';
 
 
-import { listData } from './data'
 import './App.css';
 import { getWindowDimensions } from '../utils/getWindowDimensions';
 import UtilsContext from '../AppContext/mainContext';
@@ -25,6 +24,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+
       activity: {
         sideBarActivity: false,
         signUpPageActivity: false,
@@ -46,12 +46,6 @@ class App extends Component {
     const copy = { ...this.state };
     const field = copy[stateField];
 
-    // console.log(`
-    //   stateField ${stateField}
-    //   runs
-    //   field ${JSON.stringify(field)}
-    //   state ${this.state[stateField]}
-    // `)
     // returns requested field with function which will concat with state when called
     return [field, (newField) => {
       this.setState({ ...copy, [stateField]: newField },
@@ -66,40 +60,35 @@ class App extends Component {
       return value === false;
     });
     document.body.style.overflow = scroll ? 'unset' : 'hidden';
-
   }
 
   render() {
-
 
     const handlePagesClick = handlePages.bind(null, this.handleParentState('activity'), this.makeBodyUnscrollable);
 
     const handleSignUpClick = handlePagesClick({ signUpPageActivity: 'toggle', sideBarActivity: true });
     const handleSideBarToggle = handlePagesClick({ sideBarActivity: 'toggle' });
 
-    const handleParentState = this.handleParentState;
-    const { loginPageActivity,
+    const { handleParentState } = this;
+    const { userData } = this.state;
+    const {
+      loginPageActivity,
       signUpPageActivity,
       sideBarActivity } = this.state.activity;
-    let { width } = this.props.dimensions;
-    width = +width;
-    const userData = this.state.userData;
-    // const position = this.state.activity.sideBar ? 'fixed' : 'static';
-    // console.log(position)
+    let width = +this.props.dimensions.width;
 
-    const stylesToApp = {
 
-    }
+   
     return (
       <UtilsContext.Provider value={{ handlePagesClick }} >
 
-        <div className="App" style={stylesToApp}>
+        <div className="App" style={{enterStyles:''}}>
 
           <div className='topBarStackingContext'>
             <Topbar
               onClick={handleSideBarToggle}
               active={sideBarActivity}
-              width={width} >
+              {...{width} } >
 
               <Sidebar
                 {
@@ -107,26 +96,25 @@ class App extends Component {
                 handlers={{
                   handleSignUpClick,
                   handleParentState,
-                  
                 }}
-                listData={listData}
                 onClick={handleSideBarToggle}
                 userData={userData}
               />
 
-            {signUpPageActivity && <SignUpWithFocus onClick={handleSignUpClick} width={width} />}
-            {
-              loginPageActivity && <Login
-                onClick={handlePagesClick({ loginPageActivity: false, sideBarActivity: true })}
-                {...{ handleParentState, width }}
-              />
-            }
+              {
+                signUpPageActivity && <SignUpWithFocus onClick={handleSignUpClick} width={width} />
+              }
+              {
+                loginPageActivity && <Login
+                  onClick={handlePagesClick({ loginPageActivity: false, sideBarActivity: true })}
+                  {...{ handleParentState, width }}
+                />
+              }
             </Topbar>
           </div>
 
 
           {/* Routes Go here  */}
-
           <div className="mainStackingContext"> {/* Only for z index, so show planned pages */}
             <Route exact path='/'>
               <MainHeader />
@@ -136,7 +124,6 @@ class App extends Component {
               <header className="App-header">
                 <h1>hi There</h1>
               </header>
-
             </Route>
 
             <Route path='/docs'>
@@ -147,7 +134,6 @@ class App extends Component {
               <Contacts />
             </Route>
           </div>
-
           {/* Routes End*/}
 
         </div>

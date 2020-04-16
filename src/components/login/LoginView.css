@@ -10,8 +10,8 @@
 }
 
 
-
-.wider .inner-form {
+/* media */
+.mobile .inner-form, .tablet .inner-form {
     width: 99%;
     max-width: 380px;
 }
@@ -102,10 +102,11 @@ input[type='text'], input[type='password'] {
     background-color: rgb(191, 206, 209);
     padding: 9px 20px;
     font-size: 1em;
-  
+    
     position:relative;
    
 }
+
 
 
 button:focus{

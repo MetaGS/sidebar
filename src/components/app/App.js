@@ -49,7 +49,7 @@ class App extends Component {
     // returns requested field with function which will concat with state when called
     return [field, (newField) => {
       this.setState({ ...copy, [stateField]: newField },
-        () => { console.log(this.state) }
+      () => {  }
       );
     }];
   }
@@ -65,49 +65,52 @@ class App extends Component {
   render() {
 
     const handlePagesClick = handlePages.bind(null, this.handleParentState('activity'), this.makeBodyUnscrollable);
+    const { handleParentState } = this;
 
     const handleSignUpClick = handlePagesClick({ signUpPageActivity: 'toggle', sideBarActivity: true });
     const handleSideBarToggle = handlePagesClick({ sideBarActivity: 'toggle' });
+    const handleLoginClick = handlePagesClick({ loginPageActivity: 'toggle', sideBarActivity: true })
 
-    const { handleParentState } = this;
     const { userData } = this.state;
+    let { media } = this.props.dimensions;
+
     const {
       loginPageActivity,
       signUpPageActivity,
       sideBarActivity } = this.state.activity;
-    let width = +this.props.dimensions.width;
 
 
-   
+    // standartize mainTransparent's onClick function so it works with any component
+    // standartize onClick, handleToggle etc. So you understand what function does with its name
+    // посмотреть все файлы js, потом css refine(first: _code, signup page laptop, topbar search)
+
     return (
-      <UtilsContext.Provider value={{ handlePagesClick }} >
+      <UtilsContext.Provider value={{ handlePagesClick, handleParentState, userData }} >
 
-        <div className="App" style={{enterStyles:''}}>
+        <div className="App" style={{ enterStylesHere: '' }}>
 
           <div className='topBarStackingContext'>
             <Topbar
               onClick={handleSideBarToggle}
               active={sideBarActivity}
-              {...{width} } >
-
-              <Sidebar
-                {
-                ...{ userData, active: sideBarActivity, width }}
-                handlers={{
-                  handleSignUpClick,
-                  handleParentState,
-                }}
-                onClick={handleSideBarToggle}
-                userData={userData}
-              />
+              {...{ media }}
+            >
+              {/* Topbar props.children */}
+              { sideBarActivity && <Sidebar
+                  media={media}
+                  handlers={{
+                    handleSignUpClick,
+                    handleLoginClick
+                  }}
+                  onClick={handleSideBarToggle}
+                />}
 
               {
-                signUpPageActivity && <SignUpWithFocus onClick={handleSignUpClick} width={width} />
+                signUpPageActivity && <SignUpWithFocus onClick={handleSignUpClick} media={media} />
               }
-              {
-                loginPageActivity && <Login
-                  onClick={handlePagesClick({ loginPageActivity: false, sideBarActivity: true })}
-                  {...{ handleParentState, width }}
+              { loginPageActivity && <Login
+                  onClick={handleLoginClick}
+                  {...{ media }}
                 />
               }
             </Topbar>
@@ -150,3 +153,5 @@ export default getWindowDimensions(App);
 // need to set tabindexes
 // use tablerows for data statistics at the end
 // use vmins for fonts for better cross browsing calc(16px + 0.5vmin)
+
+// Нужна терминология в каждом компоненте одни и те же переменные должны отвечать схожим вещам

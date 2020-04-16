@@ -5,7 +5,7 @@ export function getWindowDimensions(WrappedComponent) {
 
     return function (props) {
 
-        const [[width, height], setDimensions] = useState([0, 0]);
+        const [[width, height, media], setDimensions] = useState([0, 0, '']);
 
 
         useEffect(function () {
@@ -20,13 +20,16 @@ export function getWindowDimensions(WrappedComponent) {
         function updateDimensions() {
             const height = window !== undefined ? window.innerHeight : 0;
             const width = window !== undefined ? window.innerWidth : 0;
+            const media = +width > 750 ? 'laptop' : +width < 450 
+            ? 'mobile' : 'tablet';
+        
 
-            setDimensions([width, height]);
+            setDimensions([width, height, media]);
         };
 
-        const dimensions = { width, height };
+        const dimensions = { width, height, media };
 
-        console.log(dimensions);
+        
 
         return <WrappedComponent dimensions={dimensions} {...props} />;
 

@@ -1,13 +1,14 @@
 import React, { useEffect, useContext } from 'react';
 
 import MainTransparent from '../utils/mainTransparent';
-import CloseButton from '../buttons/closeButton';
 import SignUpView from './signupView';
 
 import FocusHOC from '../utils/focusHOC';
 import './signup.css';
 import context from '../AppContext/mainContext';
 
+// temporarily im downloading styles.module.css from login folder, need to create custom in the future
+import styles from './Signup.module.css';
 
 export const SignUpWithFocus = FocusHOC(SignUp);
 
@@ -15,10 +16,9 @@ export default function SignUp(props) {
 
     const value = useContext(context)
 
-    console.log(`here is context value: ${value}`)
-    const phone = props.width > 750 ? 'usual' : 'wider';
+    const { media } = props;
     return (
-        <MainTransparent styles={phone}>
+        <MainTransparent styles={`${media} ${styles.main} ${styles[media]}`} onClick={props.onClick}>
             <SignUpView {...props} />
         </MainTransparent>
     )

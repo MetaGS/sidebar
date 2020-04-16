@@ -1,17 +1,18 @@
-import React, {useState, useContext} from 'react';
-import {Link, NavLink} from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 import styles from './Topbar.module.css';
 import context from '../AppContext/mainContext';
 
 
-export default function Topbar(props){
+export default function Topbar(props) {
     // const [active, setActive] = useState(props.active);
-    const phone = props.width > 750 ? 'usual' : 'wider' ;
-    const displayOrNot = {}
-    if(phone === 'wider'){
+    const { media } = props;
+
+    const displayOrNot = {} // it is style object to put into div below
+    if (media === 'tablet' || media === 'mobile') {
         displayOrNot.display = 'none';
-    } 
+    }
 
     const contextValue = useContext(context);
     const closeTabs = contextValue.handlePagesClick({});
@@ -27,13 +28,13 @@ export default function Topbar(props){
             {props.children}
             <div className={`${styles.main} `}>
                 <div className={styles.logo}>
-                    <div 
+                    <div
                         className={`${styles.burger} ${props.active && styles.active}`}
                         onClick={props.onClick}
-                        >
+                    >
                         <span className={styles.burger_self}></span>
                     </div>
-                    <h2 className={styles.logo_self}>CodeWithMe</h2>
+                    <h2 className={styles.logo_self}>_CODE</h2>
                 </div>
                 <div className={styles.right_bar} style={displayOrNot}>
                     <ul onClick={closeTabs}>
@@ -49,8 +50,8 @@ export default function Topbar(props){
                         <NavLink to='./about' activeClassName={styles.activeLink}>
                             <li>About</li>
                         </NavLink>
-                            <input type="text" className="class"/>
-                            <i className="search icon"></i>
+                        <input type="text" className="class" />
+                        <i className="search icon"></i>
                     </ul>
                 </div>
             </div>

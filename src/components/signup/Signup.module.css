@@ -1,0 +1,17 @@
+.main {
+    display: flex;
+    align-items: center;
+}
+
+
+.laptop {
+    width: 75%;
+    left: 25%;
+}
+
+.mobile, .tablet {
+    width:100%;
+    left: 0;
+    top: 0%;
+    height:100%;
+}

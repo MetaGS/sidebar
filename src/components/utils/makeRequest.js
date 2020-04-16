@@ -1,9 +1,6 @@
 
-
-
 export const makeRequest = function (json) {
 
-    // const data = JSON.parse(json);
     let prom = new Promise((resolve, reject) => {
         let data;
         setTimeout(function () {
@@ -26,13 +23,3 @@ export const makeRequest = function (json) {
     return prom;
 }
 
-const format = {
-    name: 'Sten',
-    email: 'haha9595@inbox.ru'
-}
-
-makeRequest(JSON.stringify(format))
-    .then((data) => console.log(data))
-    .catch((erro) => {
-        console.log(`Yoour error is: ${erro}`)
-    });

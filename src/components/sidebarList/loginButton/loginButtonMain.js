@@ -9,12 +9,12 @@ export default function LoginMain(props) {
 
     const contextValue = useContext(context);
 
-    const {userData} = props;
-    const loggedIn = userData.loggedIn;
+    const { userData } = contextValue;
+    const { loggedIn } = userData;
 
 
     function logOut() {
-        const [, save] = props.handlers.handleParentState('userData');
+        const [, save] = contextValue.handleParentState('userData');
         save({
             loggedIn: false,
             nickName: '',
@@ -22,9 +22,10 @@ export default function LoginMain(props) {
             email: ''
         })
     }
-    const { handleSignUpClick } = props.handlers;
+    const { handleSignUpClick, handleLoginClick } = props.handlers;
 
-    const handleLoginClick = contextValue.handlePagesClick({ loginPageActivity: 'toggle', sideBarActivity: true })
+    // const handleLoginClick = contextValue.handlePagesClick({ loginPageActivity: 'toggle', sideBarActivity: true })
+
     // also when user clicks login or signup focus should be on the input
     const loginView = (
         <LoginButton>
@@ -32,12 +33,14 @@ export default function LoginMain(props) {
                 { onClick: handleLoginClick, text: 'Log in' },
                 { onClick: handleSignUpClick, text: 'Sign up' }
             ]}
-        </LoginButton>);
+        </LoginButton>
+    );
     const logoutView = (
         <LoginButton userData={userData} >
             {[{ onClick: logOut, text: 'Log out' }]}
-        </LoginButton>);
+        </LoginButton>
+    );
 
 
-        return loggedIn ? logoutView : loginView;
+    return loggedIn ? logoutView : loginView;
 }

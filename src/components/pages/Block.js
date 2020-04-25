@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styles from './styles.module.css';
 
 const Block = (props) => {
-    const {icon,description} = props;
+    const { icon, description } = props;
     return (
         <div className={styles.mainBlock}>
             <i className={`blue ${icon} icon`} style={{}}></i>

@@ -9,14 +9,10 @@ import MainHeader from '../header/mainHeader'
 import Docs from '../pages/Docs';
 import Contacts from '../pages/Contacs';
 
-
 import './App.css';
 import { getWindowDimensions } from '../utils/getWindowDimensions';
-import UtilsContext from '../AppContext/mainContext';
 import { handlePages } from '../utils/togglePages';
-
-
-
+import UtilsContext from '../AppContext/mainContext';
 
 
 class App extends Component {
@@ -39,8 +35,33 @@ class App extends Component {
         loggedIn: false
       }
     };
-
   }
+
+  componentDidMount() {
+    document.body.addEventListener('click', this.determineComponentSize, true);
+  }
+
+  componentWillUnmount() {
+    document.body.removeEventListener('click', this.detemineComponentSize, true);
+  }
+
+
+
+  determineComponentSize = (event) => {
+    const target = event.target;
+    const { x, y, width, height, top, left, right, bottom } = target.getBoundingClientRect();
+    const mousePosition = { 
+      x: event.clientX,
+      y: event.clientY
+    }
+    const coordsObject = { 
+      mousePosition,
+      ...{x, y, width, height, top, left, right, bottom}
+    };
+    console.log(coordsObject);
+  }
+
+
 
   handleParentState = (stateField) => {
     const copy = { ...this.state };
@@ -80,16 +101,17 @@ class App extends Component {
       sideBarActivity } = this.state.activity;
 
 
-    // standartize mainTransparent's onClick function so it works with any component
     // standartize onClick, handleToggle etc. So you understand what function does with its name
-    // посмотреть все файлы js, потом css refine(first: _code, signup page laptop, topbar search)
+    // посмотреть все файлы js, потом css refine(first: _code: done, signup page laptop: done, topbar search: done)
+    //
 
     return (
       <UtilsContext.Provider value={{ handlePagesClick, handleParentState, userData }} >
 
-        <div className="App" style={{ enterStylesHere: '' }}>
+        <div className="App" style={{ enterStylesHere: '' }}  >
 
           <div className='topBarStackingContext'>
+
             <Topbar
               onClick={handleSideBarToggle}
               active={sideBarActivity}
@@ -103,16 +125,19 @@ class App extends Component {
                     handleLoginClick
                   }}
                   onClick={handleSideBarToggle}
-                />}
+                />
+              }
 
               {
                 signUpPageActivity && <SignUpWithFocus onClick={handleSignUpClick} media={media} />
               }
+
               { loginPageActivity && <Login
                   onClick={handleLoginClick}
                   {...{ media }}
                 />
               }
+
             </Topbar>
           </div>
 

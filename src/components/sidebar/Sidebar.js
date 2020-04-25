@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {Link, NavLink} from 'react-router-dom';
 
 import List from '../sidebarList/List';
 import LoginButton from '../sidebarList/loginButton/loginButtonMain';
@@ -18,7 +19,20 @@ class Sidebar extends Component {
 
                 <div className={`sidebar-main ${media}`}>
                     <div className="inner-container">
-                       
+                    {/* <ul style={{}}>
+                        <NavLink to='/' exact activeClassName={{}}>
+                            <li>Main</li>
+                        </NavLink>
+                        <Link to='/docs'>
+                            <li>Docs</li>
+                        </Link>
+                        <Link to='/contacts'>
+                            <li>Contacts</li>
+                        </Link>
+                        <NavLink to='./about' activeClassName={{}}>
+                            <li>About</li>
+                        </NavLink>
+                    </ul> */}
                         <LoginButton handlers={this.props.handlers} />
                         {listData.map((item, index) => {
                             return <List item={item} key={`${index + item}`} />

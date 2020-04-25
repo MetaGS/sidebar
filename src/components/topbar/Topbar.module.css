@@ -1,7 +1,7 @@
 /* 
 container1
     main
-        logo
+        leftbar
             logo_self
         right_bar
             ul
@@ -15,14 +15,13 @@ body {
 .main {
     display: flex;
     justify-content: space-between;
-    /* background-color: red; */
     width: 100%;
+    padding: 0 20px;
     height: 50px;
     position: fixed;
     z-index: 10;
-    /* cursor: pointer; */
     background-color: #2B3137;
-    /* background-image: url('../../bc.png'); */
+   
     color: #FAFBFC
 }
 
@@ -31,19 +30,19 @@ body {
     top: 0;
 }
 
-.logo {
+.leftBar {
     height: 100%;
-    margin-left: 2%;
     display: flex;
     align-items: center;
-    font-family: 'Bowlby One SC', cursive;
     font-weight:200;
     letter-spacing: 1px;
 }
 
 .logo_self {
-    margin-left: 10px;
+    margin: 0 10px;
     cursor: pointer;
+    font-family: 'Bowlby One SC', cursive;
+    
 }
 
 .burger {
@@ -100,57 +99,183 @@ body {
 }
 
 
+/* UserProfile photo and data on topbar */
+.userMain {
+    display: flex;
+    height: 100%;
+    border-left: 1px solid rgba(250, 251, 252, 0.486);
+    border-right: 1px solid rgba(250, 251, 252, 0.486);
+    cursor: pointer;
+    margin-left: 20px; 
+    position: relative;
+}
 
+.userPhoto {
+    padding: 7px;
+    
+}
+
+.userPhotoSelf {
+    display: block;
+    border-radius: 10%;
+    width: auto;
+    height: 100%;
+}
+
+.userData {
+    padding: 0px 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 150px;
+    overflow: hidden;
+}
+
+.userName {
+    font-size: 0.9rem;
+}
+
+.userText {
+    font-size: 0.7rem;
+    opacity: 0.6;
+}
+
+
+
+
+
+
+
+/* Add post Add new Lesson and etc */
+.addPostNavbar{
+    position: relative;
+}
+
+.addPostItem {
+    list-style: none;
+    cursor: pointer;
+}
+
+.mainAddButtons {
+    position: absolute;
+    top: 110%;
+    
+}
+
+.mainAddButtonsItem {
+    width: 200px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow:hidden;
+}
+
+.addButton {
+    background-color:#FAFBFC; 
+    padding: 8px 15px;
+    border: none;
+}
+
+.addButton:hover {
+    background-color: #0366D6;
+}
+
+.tooltipArrow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -4px;
+    left: 11px;
+    background-color:#FAFBFC;    
+    font-size: 0;
+    color: transparent;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+
+/* right bar styles */
 .right_bar ul {
     height: 100%;
+    
     display: flex;
     align-items: center;
     font-family:sans-serif;
     font-weight:300;
     letter-spacing:1px;
     font-size: 1em;
-    /* cursor: pointer; */
 }
 
-.right_bar li {
+.navButton {
     list-style: none;
-    /* background-color: red ; */
     margin-left: 10px;
     border: 1px rgba(0,0,0,0) solid;
-    padding: 4px 7px;
+    padding: 4px 14px 4px;
     cursor: pointer;
+    
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
 
-.right_bar li:last-child {
-    margin-right: 10px;
+.right_bar a:last-child li {
+    margin-right: 0px;
+    padding-right: 0;
 }
 
-.right_bar li:hover {
+.navButton:hover{
     border: 1px grey solid;
-    border-radius: 5px;
-    background-color: rgb(112, 110, 110);
+    border-radius: 20px;
+    
 }
 
-.right_bar li:active {
-    /* border: 1px grey solid;
-    border-radius: 5px; */
-    background-color: rgb(223, 219, 219);
-}
 
 .right_bar a {
     text-decoration: none;
     color:#FAFBFC;
 }
-.right_bar a:hover {
-    text-decoration: underline;
-}
+
 
 .activeLink li{
     border: 1px grey solid;
-    border-radius: 5px;
-    background-color: rgb(112, 110, 110);
+    border-radius: 20px;
 }
+
+.search {
+    /* background-color: red;
+     */
+    display:flex;
+    align-items: center;
+}
+
+ .search input {
+    height: 28px;
+    width: 200px;
+    background-color: rgb(63, 68, 80);
+    border: none;
+    border-radius: 3px;   
+    outline: none;
+    color: rgb(148, 133, 133);
+    padding-left: 28px;
+    /* margin: 0px 20px 0 5px; */
+    transition: width 0.2s linear;
+}
+
+.searchIcon {
+    position: relative;
+    left:30px;
+    top: -2px;
+    color:rgb(101, 113, 139)
+}
+
+.laptop input:focus, .tablet input:focus {
+    width: 380px;
+}
+
+
+
+
 
 
 /* media queries go here. There is three Types mobile, tablet, laptop */

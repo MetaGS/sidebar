@@ -3,14 +3,16 @@ import { Route } from 'react-router-dom';
 
 import Sidebar from '../sidebar/Sidebar';
 import Login from '../login/Login';
-import { SignUpWithFocus } from '../signup/Signup';
+import { SignUpWithFocus } from '../signup/signup';
 import Topbar from '../topbar/Topbar';
 import MainHeader from '../header/mainHeader'
 import Docs from '../pages/Docs';
 import Contacts from '../pages/Contacs';
+import CreatePost from '../createPost/createPost';
 
 import './App.css';
-import { getWindowDimensions } from '../utils/getWindowDimensions';
+import { getWindowDimensions } from '../utils/getDimensions';
+import { determineComponentSize } from '../utils/getDimensions'
 import { handlePages } from '../utils/togglePages';
 import UtilsContext from '../AppContext/mainContext';
 
@@ -38,27 +40,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    document.body.addEventListener('click', this.determineComponentSize, true);
+    document.body.addEventListener('click', determineComponentSize, true);
   }
 
   componentWillUnmount() {
-    document.body.removeEventListener('click', this.detemineComponentSize, true);
-  }
-
-
-
-  determineComponentSize = (event) => {
-    const target = event.target;
-    const { x, y, width, height, top, left, right, bottom } = target.getBoundingClientRect();
-    const mousePosition = { 
-      x: event.clientX,
-      y: event.clientY
-    }
-    const coordsObject = { 
-      mousePosition,
-      ...{x, y, width, height, top, left, right, bottom}
-    };
-    console.log(coordsObject);
+    document.body.removeEventListener('click', determineComponentSize, true);
   }
 
 
@@ -98,7 +84,8 @@ class App extends Component {
     const {
       loginPageActivity,
       signUpPageActivity,
-      sideBarActivity } = this.state.activity;
+      sideBarActivity 
+    } = this.state.activity;
 
 
     // standartize onClick, handleToggle etc. So you understand what function does with its name
@@ -108,7 +95,7 @@ class App extends Component {
     return (
       <UtilsContext.Provider value={{ handlePagesClick, handleParentState, userData }} >
 
-        <div className="App" style={{ enterStylesHere: '' }}  >
+        <div className="App offsetTopTo50px" style={{ enterStylesHere: '' }}  >
 
           <div className='topBarStackingContext'>
 
@@ -149,9 +136,7 @@ class App extends Component {
             </Route>
 
             <Route path='/about'>
-              <header className="App-header">
-                <h1>hi There</h1>
-              </header>
+              <CreatePost/>
             </Route>
 
             <Route path='/docs'>

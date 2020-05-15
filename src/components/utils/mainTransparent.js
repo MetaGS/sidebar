@@ -13,7 +13,7 @@ export default function MainTransParent(props){
     
     
     return (
-    <div className={`${styles.main} ${props.styles}`} onClick={closeOnTransparentClick}>
+        <div className={`${styles.main} ${props.styles}`} onClick={closeOnTransparentClick}>
             {props.children}
         </div>
     );

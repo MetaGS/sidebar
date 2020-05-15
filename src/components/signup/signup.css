@@ -13,16 +13,13 @@
 
 
 /* media for less than 750px */ 
-.mobile .signup-main, .tablet .signup-main {
-    width: 99%;
-}
+
 /* end of media */
 
 
 
 .signup-main {
     overflow: auto;
-    /* max-width: 600px; */
     background-color: #FFFFFF;
     margin-top: 0px;
     padding: 40px;
@@ -30,12 +27,14 @@
     max-height: 100%;
     overflow-wrap: break-word;
     font-family: sans-serif;
-    
-    border-radius: 5px;
+   
     margin: 0 auto;
-    /* position:absolute;
-    left:17%;
-    top: 17%; */
+}
+
+.signupInner {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .signup-self h2 {
@@ -59,7 +58,7 @@
     outline: none;
 }
 
-.signup-self button {
+.submit-signup {
     margin: 20px auto 0;
     padding: 9px;
     font-size: 1em;
@@ -69,17 +68,26 @@
     background-color: #BFCED1;
 }
 
-.signup-self button:last-child {
+
+
+.submit-signup--pink {
     margin: 10px auto 20px;
     background-color: #ED5E68;
     border-color: #ED5E68;
 }
+.submit-signup--pink:hover {
+    background-color: #ED5E68;
+}
+
+
+
+
 
 .signup-thirdparty {
     margin-top: 10px;
     /* margin-bottom: 50px; */
     display: flex;
-    flex-direction: column;
+   
     align-items: center;
     justify-content: center;
 }
@@ -95,20 +103,18 @@
     border-radius: 5px;
 }
 
-.signup-thirdparty button:active {
-    opacity: 1;
+.signup-thirdparty a {
+    color: grey;
+    transition: all 0.2s linear;
 }
 
-.facebook {
-    background-color: #3b5998;
-}
-.twitter {
-    background-color: #21afde;
+.signup-thirdparty a:hover {
+    transform:  translate3d(0, 0, 5px);
+    font-size: 20px;
 }
 
-.google {
-    background-color: darkred;
-}
+
+
 
 .bold {
     font-weight: bolder;

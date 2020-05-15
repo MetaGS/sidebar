@@ -18,8 +18,8 @@ export default function SignUp(props) {
 
     const { media } = props;
     return (
-        <MainTransparent styles={`${media} ${styles.main} ${styles[media]}`} onClick={props.onClick}>
+        
             <SignUpView {...props} />
-        </MainTransparent>
+  
     )
 }

@@ -16,6 +16,17 @@ font-family: 'Montserrat', sans-serif;
   z-index: 1;
 }
 
+.container1200 {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+}
+
+.offsetTopTo50px {
+  padding-top: 50px;
+  height: 100vh;
+}
+
 .topBarStackingContext {
   margin: 0;
   padding: 0;
@@ -27,6 +38,8 @@ font-family: 'Montserrat', sans-serif;
 .mainStackingContext {
   position: relative;
   z-index: 1;
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -63,20 +76,7 @@ h1, h2, h2, h4, h5, h6, p, button {
 
 
 
-.App-header {
-  background-color: #282c34;
-  background-image: url('../../bcIronMan.png');
-  background-position: center;
-  background-size: cover;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  z-index: -999;
-}
+
 
 
 

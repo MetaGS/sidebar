@@ -34,6 +34,19 @@ export function getWindowDimensions(WrappedComponent) {
         return <WrappedComponent dimensions={dimensions} {...props} />;
 
     }
+}
 
 
+export function determineComponentSize( event ){
+    const target = event.target;
+    const { x, y, width, height, top, left, right, bottom } = target.getBoundingClientRect();
+    const mousePosition = { 
+      x: event.clientX,
+      y: event.clientY
+    }
+    const coordsObject = { 
+      mousePosition,
+      ...{x, y, width, height, top, left, right, bottom}
+    };
+    console.log(coordsObject);
 }

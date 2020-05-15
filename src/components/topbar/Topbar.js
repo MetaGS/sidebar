@@ -38,8 +38,7 @@ export default function Topbar(props) {
                     {/* Burger and Logo  */}
                     <div
                         className={`${styles.burger} ${props.active && styles.active}`}
-                        onClick={props.onClick}
-                    >
+                        onClick={props.onClick} >
                         <span className={styles.burger_self}></span>
                     </div>
                     <h2 className={styles.logo_self}>_CODE</h2>

@@ -1,0 +1,54 @@
+
+.mainBack {
+    /* need to move bg photo to server */
+    background: #333  url('../../bgpost.jpg') repeat left top;
+    background-size: auto;
+    width: 100%;
+    height: 100%;
+    color: whitesmoke;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.settings {
+    width: 25%;
+    min-height: 500px;
+    background-color: rgba(0,0,0, 0.2)
+}
+
+.editorTop {
+    width: 75%;
+    min-height: 500px;
+    background-color: rgba(50,50,50, 0.2)
+}
+
+.header {
+
+}
+
+.editorSelf {
+
+}
+
+.turnOnH1 {
+    padding: 5px;
+    margin: 10px;
+}
+
+.editorSelf {
+    background-color: #FAFBFC;
+    min-height: 250px;
+    color: #333;
+}
+
+.redText {
+    color: red;
+    font-size: 20px;
+}
+
+
+
+

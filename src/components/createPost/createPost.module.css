@@ -49,6 +49,15 @@
     font-size: 20px;
 }
 
+/* createPost2 */
+.show {
+    padding: 10px;
+    min-height: 400px;
+    background-color: rgba(100,100,100,0.7);
+    border: 1px rgb(204, 199, 199) solid;
+    border-radius: 4px;
+}
+
 
 
 

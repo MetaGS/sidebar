@@ -73,6 +73,9 @@ export default function Topbar(props) {
                         <NavLink to='./about' activeClassName={styles.activeLink}>
                             <li className={styles.navButton}>About</li>
                         </NavLink>
+                        <NavLink to='./createpost2' activeClassName={styles.activeLink}>
+                            <li className={styles.navButton}>createPost2</li>
+                        </NavLink>
                     </ul>
                 </div>
 

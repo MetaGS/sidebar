@@ -9,6 +9,7 @@ import MainHeader from '../header/mainHeader'
 import Docs from '../pages/Docs';
 import Contacts from '../pages/Contacs';
 import CreatePost from '../createPost/createPost';
+import CreatePost2 from '../createPost/createPost2';
 
 import './App.css';
 import { getWindowDimensions } from '../utils/getDimensions';
@@ -145,6 +146,9 @@ class App extends Component {
 
             <Route path='/contacts'>
               <Contacts />
+            </Route>
+            <Route path='/createpost2'>
+              <CreatePost2 />
             </Route>
           </div>
           {/* Routes End*/}

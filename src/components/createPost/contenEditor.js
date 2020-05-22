@@ -140,7 +140,6 @@ var ContentEditable = /** @class */ (function (_super) {
             return true;
         }
         // Handle additional properties
-        console.log('others')
         return props.disabled !== nextProps.disabled ||
             props.tagName !== nextProps.tagName ||
             props.className !== nextProps.className ||

@@ -13,7 +13,7 @@ export default function (props) {
     const [[selectionStart, selectionEnd], setSelections] = useState([0, 0]);
     const [[text, textLength], setTextAndLength] = useState([]);
     const [bolds, addBold] = useState([]);
-    const [textState, setTextState] = useState('nameent <b data-bold="bold">entered</b> here');
+    const [textState, setTextState] = useState('nameent <b data-bold="bold">entered</b> here here else <b data-bold="bold"> other bold text</b>');
     const [isEditableDisabled, setEditable] = useState(false);
 
 
@@ -43,8 +43,8 @@ export default function (props) {
         let textCopy = textState;
         let textINeed = textState.slice(start, end);
 
-        let bold = <b>{textINeed}</b>;
-        let textBold = `<b data-bold="bold">${textINeed}</b>`;
+
+        let textBold = `<b data-bold="bold">${textINeed}</b> here else <b data-bold="bold"> other bold text</b>`;
         let exactNew = textCopy.replace(textINeed, textBold);
 
 
@@ -63,24 +63,174 @@ export default function (props) {
         // let editor = divShowerRef.current;
         let start = [...selectionStart];
         let end = [...selectionEnd];
-        // let textCopy = textState;
-        // let textINeed = textState.slice(start, end);
         let startNode = getInnerNode([...start]);
         let endNode = getInnerNode([...end]);
         let isBoldConfigStart = toggleBold(startNode);
         let isBoldConfigEnd = toggleBold(endNode)
         console.log(isBoldConfigStart, isBoldConfigEnd);
-    
-        
-        const howDeepConf = howDeep(start, end);
-        // console.log(JSON.stringify(howDeepConf));
-        console.log(howDeepConf)
-        // console.log(`
-        //     startNode: ${startNode}
-        //     endNode: ${endNode}
-        // `)
+
+
+        const howDeepBoldConf = howDeep(start, end);
+        console.log(howDeepBoldConf);
+        howDeepBoldConf.isBoldStart = isBoldConfigStart;
+        howDeepBoldConf.isBoldEnd = isBoldConfigEnd;
+
+        if (isBoldConfigStart.bold || isBoldConfigEnd.bold) {
+            unbold(howDeepBoldConf, startNode, endNode, start, end);
+        }
 
     }
+
+    const unbold = ({ isBoldStart, isBoldEnd, ...startEndConf }, startNode, endNode, startArr, endArr) => {
+
+        if (isBoldStart.bold && isBoldEnd.bold) {
+            if (isBoldStart.boldElement === isBoldEnd.boldElement) {
+                console.log(isBoldStart.boldElement)
+                const { boldElement } = isBoldStart;
+
+                boldBefore(boldElement, startArr, endArr, startNode, endNode);
+                // boldAfter(boldElement, endArr, endNode);
+                let addToBold = document.createElement('span');
+                addToBold.innerHTML = boldElement.innerHTML;
+
+                boldElement.replaceWith(addToBold)
+                setTextState(divShowerRef.current.innerHTML)
+            } else {
+
+            }
+        } else {
+            const bold = isBoldStart.bold ? isBoldStart : isBoldEnd;
+
+
+        }
+    }
+
+
+
+
+
+    const boldBefore = (boldElement, startArr, endArr, startNode, endNode) => {
+        let startArrCopy = startArr.slice().reverse();
+        let endArrCopy = endArr.slice().reverse();
+        let currentElement = startNode;
+
+        while (boldElement && boldElement !== currentElement) {
+            
+            
+            debugger
+            if (isText(currentElement)) {
+
+                const parent = currentElement.parentNode;
+                let index = startArrCopy.pop();
+                let endIndex = endArrCopy.pop();
+
+
+                let { makePrevBold, toggle } = before(parent, currentElement, index, endIndex);
+                let { makeAfterBold } = after(parent, currentElement, index, endIndex);
+
+                parent.innerHTML = '';
+                parent.append(makePrevBold, toggle, makeAfterBold);
+                currentElement = parent;
+
+            } else {
+
+                let upToIndex = startArrCopy.pop();
+                for (let i = upToIndex; i > 0; i--) {
+                    console.log(upToIndex)
+                    let parent = currentElement.parentNode;
+                    let makeBoldChild = parent.children[i];
+                    let makeBold = document.createElement('b');
+                    makeBold.dataset.bold = "bold";
+                    makeBold.append(makeBoldChild);
+                    parent.prepend(makeBold);
+                    currentElement = currentElement.parentNode;
+                }
+            }
+        }
+    }
+
+    const toggleBold = (children) => {
+        const editor = divShowerRef.current;
+        let parent = children.parentNode
+        let config = { bold: false, boldElement: null }
+        while (true) {
+            if (parent === editor) break;
+            config.bold = config.bold ? true : parent.matches('[data-bold]');
+            // if (parent.matches('[data-bold]')) {
+            //     config.boldElement = parent;
+            // } UNCOMMENT IT IS WORKING VARIANT
+            if (config.bold) {
+                config.boldElement = parent;
+            }
+            children = parent;
+            parent = parent.parentNode;
+        }
+        return config;
+    }
+
+    function before(parent, current, index, endIndex) {
+        let makeBold = current.data.slice(0, index);
+        console.log(index, endIndex)
+        let toggle = document.createTextNode(current.data.slice(index, endIndex));
+        let makePrevBold = document.createElement('b');
+        makePrevBold.dataset.bold = "bold";
+        makePrevBold.append(makeBold);
+        return { makePrevBold, toggle }
+    }
+
+    function after(parent, current, index, endIndex) {
+        let makeBold = document.createTextNode(current.data.slice(endIndex));
+        let toggle = current.data.slice(index, endIndex);
+        let makeAfterBold = document.createElement('b');
+        makeAfterBold.dataset.bold = "bold";
+        makeAfterBold.append(makeBold);
+        return { makeAfterBold, toggle }
+    }
+
+
+    const boldAfter = (boldElement, endArr, endNode) => {
+        let startArrCopy = endArr.slice().reverse();
+        let currentElement = endNode;
+        while (boldElement !== currentElement) {
+            console.log('loop')
+
+            if (isText(currentElement)) {
+
+                const parent = currentElement.parentNode;
+                let index = startArrCopy.pop();
+                let makeBold = document.createTextNode(currentElement.data.slice(index));
+                let toggle = currentElement.data.slice(0, index);
+                let makePrevBold = document.createElement('b');
+                makePrevBold.dataset.bold = "bold";
+                makePrevBold.append(makeBold);
+                parent.innerHTML = '';
+                currentElement = parent;
+                parent.append(makePrevBold, toggle);
+
+            } else {
+                let upToIndex = startArrCopy.pop();
+                let parent = currentElement.parentNode.children;
+                for (let i = upToIndex; i < parent.length; i++) {
+                    let makeBoldChild = parent[i];
+                    let makeBold = document.createElement('b');
+                    makeBold.dataset.bold = "bold makeb old hcod";
+                    makeBold.append(makeBoldChild);
+                    parent.prepend(makeBold);
+                    currentElement = parent;
+                }
+            }
+        }
+    }
+
+
+    // is text check 
+
+    const isText = (node) => {
+        return (node.nodeName) === "#text" ? true : false;
+    }
+
+
+    
 
 
     const getInnerNode = (positionArray) => {
@@ -146,26 +296,6 @@ export default function (props) {
     }
 
 
-    const toggleBold = (children) => {
-        const editor = divShowerRef.current;
-        let parent = children.parentNode
-        let config = { bold: false, boldElement: null }
-        while (true) {
-            // console.log('parentNonde');
-            // console.log(parentNode)
-            if (parent === editor) break;
-            config.bold = parent.matches('[data-bold]');
-            if (config.bold) {
-                config.boldElement = parent;
-            }
-            children = parent;
-            parent = parent.parentNode;
-        }
-        return config;
-    }
-
-
-
 
     // --------- End of bold click ------------============
 
@@ -185,8 +315,12 @@ export default function (props) {
                         const { anchorNode, anchorOffset: start, focusNode, focusOffset: end } = selection;
 
                         let positions = getPositions(anchorNode, start, focusNode, end);
-                        console.log(...positions);
-                        setSelections(positions);
+                        let [startArr, endArr,a,b] = positions;
+                        console.log(`here is positions array from getPositions`)
+                        console.log(startArr, endArr);
+                        console.log(a,b)
+                        console.log('--------------')
+                        setSelections([startArr,endArr]);
 
                     }
                 })
@@ -195,66 +329,47 @@ export default function (props) {
     )
 
     const getPositions = (anchor, start, focus, end) => {
-        const [startPosition, ] = extract(anchor, start);
-        const [endPosition, ] = extract(focus, end);
+        const [startPosition, a] = extract(anchor, start);
+        const [endPosition, b] = extract(focus, end);
 
-        return [startPosition, endPosition];
+        return [startPosition, endPosition, a, b];
     }
 
     function extract(children, position) {
         let editor = divShowerRef.current;
         let parentNode;
 
-        // console.log(typeof children)
-        // console.log(children)
-        // console.log(children.nodeName)
-        let positionStart = [position];
-        let config = { bold: false };
-        // console.log('parentNonde');
-        // console.log(parentNode)
-        // console.log('anchor');
-        // console.log(children)
-        if (children !== editor) {
-            // debugger
-            // if(children.nodeName === '#text') 
-            // {
-            //     children = children.parentNode
-            //     console.log('redefined children inside if 143');
-            //     console.log(children)
 
-            // };
+        let positionStart = [position];
+        let positionsAndNames = [position,];
+
+        if (children !== editor) {
+
             parentNode = children.parentNode;
 
             while (true) {
-                // console.log('parentNonde');
-                // console.log(parentNode)
+
                 for (let i = 0; i < parentNode.childNodes.length; i++) {
                     if (parentNode?.childNodes[i] === children) {
                         positionStart.push(i);
-
+                        positionsAndNames.push([i, children.nodeName])
                     }
-
                 }
                 if (parentNode === editor) break;
-                console.log(children.nodeName);
-                console.log(parentNode.nodeName)
 
-                config.bold = parentNode.matches('[data-bold]');
-                if (config.bold) {
-                    config.boldElement = parentNode;
-                }
+
+
                 children = parentNode;
                 parentNode = parentNode.parentNode;
             }
 
         }
-        return [positionStart];
+
+        return [positionStart, positionsAndNames];
     }
 
 
     // Extract Positions Functions end -------------------
-
-
 
 
 
